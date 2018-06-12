@@ -12,7 +12,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 
-
 " === Asynchronous processing to eliminate that vim stopped by performing
 " time-consuming process ===
 NeoBundle 'Shougo/vimproc.vim', {

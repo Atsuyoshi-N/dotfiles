@@ -127,6 +127,7 @@ alias ta="tmux a"
 
 # git
 alias g='git'
+alias gffc='git flow feature checkout'
 
 #hubble
 alias hubble_ssh="ssh -i ~/.ssh/HUBBLE_RELEASE.pem ec2-user@ec2-52-196-159-26.ap-northeast-1.compute.amazonaws.com"

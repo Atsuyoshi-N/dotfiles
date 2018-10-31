@@ -1,0 +1,382 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  inoremap <expr><tab> pumvisible() ? "\<C-n>" :
+        \ neosnippet#expandable_or_jumpable() ?
+        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+'''
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_source = '''
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+  let g:neosnippet#snippets_directory='~/dotfiles/.vim/bundle/neosnippet-snippets/snippets/,~/.vim/snippets/'
+'''
+on_i = 1
+on_ft = 'snippet'
+depends = 'neosnippet-snippets'
+
+# Asynchronous processing to eliminate that vim stopped by performing
+# time-consuming process
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+hook_add = ' let g:vimshell = "mvim""'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+  let g:quickrun_config={'*': {'split': ''}}
+  let g:quickrun_config._={
+        \       'runner' : 'vimproc',
+        \       'runner/vimproc/updatetime' : 10,
+        \       'outputter/buffer/close_on_empty' : 1,
+        \       'hook/shabadoubi_touch_henshin/enable' : 1,
+        \       'hook/shabadoubi_touch_henshin/wait' : 20,
+        \ }
+  set splitbelow
+'''
+
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+
+# === Check syntax ===
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'pmsorhaindo/syntastic-local-eslint.vim'
+hook_add = '''
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_enable_signs = 1 " show sign in the line having errors
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+
+  let g:syntastic_javascript_checkers = ['eslint']
+
+  let g:syntastic_html_tidy_exec = 'tidy5'
+'''
+
+
+
+
+# === Easy to mark up ===
+[[plugins]]
+repo = 'mattn/emmet-vim'
+hook_add = '''
+  let g:user_emmet_mode = 'iv'
+  let g:user_emmet_leader_key = '<C-Y>'
+  let g:use_emmet_complete_tag = 1
+  let g:user_emmet_settings = {
+        \ 'lang' : 'ja',
+        \ 'html' : {
+        \   'filters' : 'html',
+        \ },
+        \ 'css' : {
+        \   'filters' : 'fc',
+        \ },
+        \ 'php' : {
+        \   'extends' : 'html',
+        \   'filters' : 'html',
+        \ },
+        \}
+  augroup EmmitVim
+    autocmd!
+    autocmd FileType * let g:user_emmet_settings.indentation = '               '[:&tabstop]
+  augroup END
+'''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+hook_add = '''
+let g:auto_save = 1                     " デフォルトで有効にする
+let g:auto_save_in_insert_mode = 0      " インサートモード時は保存しない
+'''
+
+# === Easy to search files from dir or buffer ===
+[[plugins]]
+repo =  'ctrlpvim/ctrlp.vim'
+
+[[plugins]]
+repo =  'Shougo/unite.vim'
+hook_add = '''
+  " start with insert mode
+  let g:unite_enable_start_insert = 1
+  " don't distinguish up case and down case
+  let g:unite_enable_ignore_case = 1
+  let g:unite_enable_smart_case = 1
+'''
+hook_post_update = '''
+  " close this by clicking twice esc key
+  au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+  au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+'''
+
+[[plugins]]
+repo =  'rking/ag.vim'
+
+
+
+# === Easy to comment out codes ===
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+
+
+# === Triming unnecessary whitespaces at the end of the line ===
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+hook_add = '''
+  " Execute :FixWhitespace command before writing file to buffer
+  autocmd BufWritePre * :FixWhitespace
+'''
+
+# === Show tree of directory ===
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  nnoremap <silent><C-e> :NERDTreeToggle<CR>
+  " show bookmark from the beginning
+  let g:NERDTreeShowBookmarks=1
+'''
+hook_post_update = '''
+  " ファイル指定で開かれた場合はNERDTreeは表示しない
+  if !argc()
+    autocmd vimenter * NERDTree|normal gg3j
+  endif
+'''
+
+
+
+# === Power up completion ===
+# NeoBundle 'marcus/rsense'
+# NeoBundle 'supermomonga/neocomplete-rsense.vim'
+[[plugins]]
+repo =  'Shougo/neocomplete.vim'
+hook_add = '''
+  " Disable AutoComplPop.
+  let g:acp_enableAtStartup = 0
+  " Use neocomplete.
+  let g:neocomplete#enable_at_startup = 1
+  " Use smartcase.
+  let g:neocomplete#enable_smart_case = 1
+  " Set minimum syntax keyword length.
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+  " Define dictionary.
+  let g:neocomplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+          \ }
+
+  " Define keyword.
+  if !exists('g:neocomplete#keyword_patterns')
+      let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+  " Plugin key-mappings.
+  inoremap <expr><C-g>     neocomplete#undo_completion()
+  inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+  " Recommended key-mappings.
+  " <CR>: close popup and save indent.
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+    " For no inserting <CR> key.
+    " return pumvisible() ? "\<C-y>" : "\<CR>"
+  endfunction
+  " <TAB>: completion.
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  " Close popup by <Space>.
+  "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+  " AutoComplPop like behavior.
+  " let g:neocomplete#enable_auto_select = 1
+
+  " Shell like behavior(not recommended).
+  " set completeopt+=longest
+  " let g:neocomplete#enable_auto_select = 1
+  " let g:neocomplete#disable_auto_complete = 1
+  " inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+  " Enable heavy omni completion.
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+  " let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+  " let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+  " For perlomni.vim setting.
+  " https://github.com/c9s/perlomni.vim
+  let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+'''
+
+[[plugins]]
+repo =  'Shougo/neocomplcache'
+
+[[plugins]]
+repo =  'Shougo/neosnippet'
+
+[[plugins]]
+repo =  'Shougo/neosnippet-snippets'
+hook_add = '''
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/,~/.vim/snippets/'
+'''
+
+
+
+# === Show dictionary in vim ===
+[[plugins]]
+repo =  'thinca/vim-ref'
+
+
+
+# === Color schemes ===
+[[plugins]]
+repo =  'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo =  'w0ng/vim-hybrid'
+hook_add  = '''
+  let g:hybrid_use_iTerm_colors = 1
+  set background=dark
+  syntax enable
+  set t_Co=256
+  colorscheme hybrid
+  " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
+  " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
+  " au MyAutoCmd VimEnter * nested colorscheme hybrid
+'''
+# let g:hybrid_use_iTerm_colors = 1
+# set t_Co=256
+# syntax enable
+# colorscheme hybrid
+# set background=dark
+
+[[plugins]]
+repo =  'abra/vim-obsidian'
+
+[[plugins]]
+repo =  'flazz/vim-colorschemes'
+
+
+
+# === Coloring color code ===
+[[plugins]]
+repo = 'gorodinskiy/vim-coloresque'
+
+
+
+# === Show status line in vim ===
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = 'set laststatus=2'
+
+# === auto paste mode in vim ===
+[[plugins]]
+repo = 'ConradIrwin/vim-bracketed-paste'
+
+# === use user defined operator
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+# === clang support
+[[plugins]]
+repo = 'rhysd/vim-clang-format'
+hook_add = '''
+  " ref: http://algo13.net/clang/clang-format-style-oputions.html
+  " ref: http://yasuharu519.hatenablog.com/entry/2015/12/13/210825
+  let g:clang_format#style_options = {
+        \ "Language": "Cpp",
+        \ "BasedOnStyle": "LLVM",
+        \ "ContinuationIndentWidth": 2,
+        \ "ConstructorInitializerIndentWidth": 2,
+        \ }
+         "AlignConsecutiveAssignments": "false",
+         "AlignConsecutiveDeclarations": "false",
+         "AlignTrailingComments": "true",
+         "AllowShortBlocksOnASingleLine": "false",
+         "AllowShortCaseLabelsOnASingleLine": "false",
+         "AllowShortIfStatementsOnASingleLine": "true",
+         "BinPackParameters": "false",
+         "BinPackArguments": "false",
+         "BreakBeforeBinaryOperators": "None",
+         "DerivePointerAlignment": "false",
+         "IndentWidth": 2,
+         "IndentCaseLabels": "true",
+         "KeepEmptyLinesAtTheStartOfBlocks": "true",
+         "PointerAlignment": "Right",
+         "SpacesBeforeTrailingComments": 1,
+'''
+
+# === かっこ操作
+[[plugins]]
+repo = 'rhysd/vim-operator-surround'
+hook_add = '''
+  " 括弧を追加する
+  map <silent> sa <Plug>(operator-surround-append)
+  " 括弧を削除する
+  map <silent> sd <Plug>(operator-surround-delete)
+  " 括弧を入れ替える
+  map <silent> sr <Plug>(operator-surround-replace)
+'''
+

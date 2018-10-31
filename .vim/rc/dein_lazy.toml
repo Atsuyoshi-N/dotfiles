@@ -1,0 +1,110 @@
+# === Go ===
+[[plugins]] # go support
+repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]] # go complete
+repo = 'zchee/deoplete-go'
+on_ft = 'go'
+
+# === Ruby / Rails ===
+[[plugins]] # ruby support
+repo = 'vim-ruby/vim-ruby'
+on_ft = 'ruby'
+
+[[plugins]] # ruby auto complete
+repo = 'fishbullet/deoplete-ruby'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'taichouchou2/vim-rails'
+
+[[plugins]]
+repo = 'romanvbabenko/rails.vim'
+
+
+[[plugins]] # Rubyのメソッドの定義元にジャンプ
+repo = 'szw/vim-tags'
+
+# === HTML, scss, Haml, Slim ===
+# HTML support
+[[plugins]]
+repo = 'othree/html5.vim'
+hook_add = '''
+ let g:html5_event_handler_attributes_complete = 0
+ let g:html5_rdfa_attributes_complete = 0
+ let g:html5_microdata_attributes_complete = 0
+ let g:html5_aria_attributes_complete = 0
+'''
+on_ft = 'html'
+
+# === Scss support ===
+[[plugins]]
+repo = 'cakebaker/scss-syntax.vim'
+on_ft = 'scss'
+
+# === Haml support ===
+[[plugins]]
+repo = 'tpope/vim-haml'
+on_ft = 'haml'
+
+# === Slim support ===
+[[plugins]]
+repo = 'slim-template/vim-slim'
+on_ft = 'slim'
+
+# === YAML support ===
+[[plugins]]
+repo = 'stephpy/vim-yaml'
+on_ft = 'yml'
+
+# === JavaScript support ===
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+[[plugins]] # jsx
+repo = 'mxw/vim-jsx'
+hook_add = 'let g:jsx_ext_required = 0'
+on_ft = 'javascript'
+
+[[plugins]] # json
+repo = 'elzr/vim-json'
+hook_add = 'let g:vim_json_syntax_conceal = 0'
+on_ft = 'json'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+
+# === markdown supports ===
+[[plugins]]
+repo = 'kannokanno/previm'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_ft = 'markdown'
+
+# === Git Support ===
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+  nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive.git'
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+
+[[plugins]]
+repo = 'rhysd/committia.vim'
+
+[[plugins]]
+repo = 'gregsexton/gitv.git'

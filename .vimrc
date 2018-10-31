@@ -4,234 +4,234 @@
 " NeoBundle
 """"""""""""""""""""""""""""""""""""""
 
-set nocompatible
-if has('vim_starting')
-  "初回起動時のみruntimepathにneobundleのパスを指定する
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-" === Init Neobundle ===
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-
-" === Asynchronous processing to eliminate that vim stopped by performing
-" time-consuming process ===
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-
-
-
-" === Open shell in vim ===
-" using) :VimShell
-NeoBundle 'Shougo/vimshell.vim'
-
-
-" === Quick run ===
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'osyo-manga/shabadou.vim'
-
-
-" === Check syntax ===
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
-
-
-
-
-" === Easy to mark up ===
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'Townk/vim-autoclose'
-
-
-
-" === Easy to search files from dir or buffer ===
-NeoBundle "ctrlpvim/ctrlp.vim"
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'rking/ag.vim'
-
-
-
-" === Easy to comment out codes ===
-NeoBundle 'tomtom/tcomment_vim'
-
-
-
-" === Triming unnecessary whitespaces at the end of the line ===
-NeoBundle 'bronson/vim-trailing-whitespace'
-
-
-
-" === Show tree of directory ===
-NeoBundle 'scrooloose/nerdtree'
-
-
-
-" === Power up completion ===
-" NeoBundle 'marcus/rsense'
-" NeoBundle 'supermomonga/neocomplete-rsense.vim'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-
-
-
-" === Show dictionary in vim ===
-NeoBundle 'thinca/vim-ref'
-
-
-
-" === Color schemes ===
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'abra/vim-obsidian'
-NeoBundle 'flazz/vim-colorschemes'
-
-
-
-" === Coloring color code ===
-NeoBundle 'gorodinskiy/vim-coloresque', {
-      \ 'autoload':{
-      \   'filetypes':['css', 'html', 'less', 'sass', 'scss', 'stylus']
-      \ }}
-
-
-
-" === Show status line in vim ===
-NeoBundle 'itchyny/lightline.vim'
-
-
-
-" === auto paste mode in vim ===
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
-
-
-
-" === twitter client ===
-NeoBundle 'TwitVim'
-
-
-" =========================
-" Language supports plugins
-" =========================
-
-
-" == Clang supports ==
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'rhysd/vim-clang-format'
-
-
-" === Golang supports ===
-NeoBundle 'fatih/vim-go'
-
-
-
-" === Ruby supports ===
-NeoBundleLazy 'vim-ruby/vim-ruby', {
-      \ 'autoload':{
-      \   'filetypes':['ruby']
-      \ }}
-
-
-
-" === Rails supports ===
-NeoBundle 'taichouchou2/vim-rails'
-NeoBundle 'romanvbabenko/rails.vim'
-
-
-
-" === HTML supports ===
-NeoBundle 'othree/html5.vim', {
-      \ 'autoloat':{
-      \   'filetypes':['html']
-      \ }}
-
-
-
-" === Slim supports ===
-NeoBundle 'slim-template/vim-slim', {
-      \ 'autoload':{
-      \   'filetypes':['slim']
-      \ }}
-
-
-
-" === Haml supports ===
-NeoBundle 'tpope/vim-haml', {
-      \ 'autoload':{
-      \   'filetypes':['haml']
-      \ }}
-
-
-
-" === Scss supports ===
-NeoBundle 'cakebaker/scss-syntax.vim', {
-      \ 'autoload':{
-      \   'filetypes':['scss']
-      \ }}
-
-
-
-" === Yaml supports ===
-NeoBundle 'yaml.vim', {
-      \ 'autoload':{
-      \   'filetypes':['yml']
-      \ }}
-
-
-
-" === Javascript supports ===
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-
-
-
-" === Json supports ===
-NeoBundle 'elzr/vim-json'
-
-
-
-" === Coffeescript supports ===
-NeoBundle 'kchmck/vim-coffee-script', {
-      \ 'autoload':{
-      \   'filetypes':['coffee']
-      \ }}
-
-
-
-" === Markdown supports ===
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-
-
-
-" === Git supports ===
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'cohama/agit.vim'
-NeoBundle 'rhysd/committia.vim'
-NeoBundle 'tpope/vim-fugitive.git'
-NeoBundle 'gregsexton/gitv.git'
-
-
-
-call neobundle#end()
-
-
-"ファイルタイプ別のプラグイン/インデントを有効にする
-filetype plugin indent on
-
-" === Install NeoBundle plugins not yet installed when vim is started ===
-NeoBundleCheck
+"set nocompatible
+"if has('vim_starting')
+"  "初回起動時のみruntimepathにneobundleのパスを指定する
+"  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"endif
+"" === Init Neobundle ===
+"call neobundle#begin(expand('~/.vim/bundle/'))
+"NeoBundleFetch 'Shougo/neobundle.vim'
+"
+"
+"" === Asynchronous processing to eliminate that vim stopped by performing
+"" time-consuming process ===
+"NeoBundle 'Shougo/vimproc.vim', {
+"\ 'build' : {
+"\     'windows' : 'tools\\update-dll-mingw',
+"\     'cygwin' : 'make -f make_cygwin.mak',
+"\     'mac' : 'make -f make_mac.mak',
+"\     'linux' : 'make',
+"\     'unix' : 'gmake',
+"\    },
+"\ }
+"
+"
+"
+"" === Open shell in vim ===
+"" using) :VimShell
+"NeoBundle 'Shougo/vimshell.vim'
+"
+"
+"" === Quick run ===
+"NeoBundle 'thinca/vim-quickrun'
+"NeoBundle 'osyo-manga/shabadou.vim'
+"
+"
+"" === Check syntax ===
+"NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
+"
+"
+"
+"
+"" === Easy to mark up ===
+"NeoBundle 'mattn/emmet-vim'
+"NeoBundle 'tpope/vim-surround'
+"NeoBundle 'tpope/vim-endwise'
+"NeoBundle 'Townk/vim-autoclose'
+"
+"
+"
+"" === Easy to search files from dir or buffer ===
+"NeoBundle "ctrlpvim/ctrlp.vim"
+"NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'rking/ag.vim'
+"
+"
+"
+"" === Easy to comment out codes ===
+"NeoBundle 'tomtom/tcomment_vim'
+"
+"
+"
+"" === Triming unnecessary whitespaces at the end of the line ===
+"NeoBundle 'bronson/vim-trailing-whitespace'
+"
+"
+"
+"" === Show tree of directory ===
+"NeoBundle 'scrooloose/nerdtree'
+"
+"
+"
+"" === Power up completion ===
+"" NeoBundle 'marcus/rsense'
+"" NeoBundle 'supermomonga/neocomplete-rsense.vim'
+"NeoBundle 'Shougo/neocomplete.vim'
+"NeoBundle 'Shougo/neocomplcache'
+"NeoBundle 'Shougo/neosnippet'
+"NeoBundle 'Shougo/neosnippet-snippets'
+"
+"
+"
+"" === Show dictionary in vim ===
+"NeoBundle 'thinca/vim-ref'
+"
+"
+"
+"" === Color schemes ===
+"NeoBundle 'altercation/vim-colors-solarized'
+"NeoBundle 'w0ng/vim-hybrid'
+"NeoBundle 'abra/vim-obsidian'
+"NeoBundle 'flazz/vim-colorschemes'
+"
+"
+"
+"" === Coloring color code ===
+"NeoBundle 'gorodinskiy/vim-coloresque', {
+"      \ 'autoload':{
+"      \   'filetypes':['css', 'html', 'less', 'sass', 'scss', 'stylus']
+"      \ }}
+"
+"
+"
+"" === Show status line in vim ===
+"NeoBundle 'itchyny/lightline.vim'
+"
+"
+"
+"" === auto paste mode in vim ===
+"NeoBundle 'ConradIrwin/vim-bracketed-paste'
+"
+"
+"
+"" === twitter client ===
+"NeoBundle 'TwitVim'
+"
+"
+"" =========================
+"" Language supports plugins
+"" =========================
+"
+"
+"" == Clang supports ==
+"NeoBundle 'kana/vim-operator-user'
+"NeoBundle 'rhysd/vim-clang-format'
+"
+"
+"" === Golang supports ===
+"NeoBundle 'fatih/vim-go'
+"
+"
+"
+"" === Ruby supports ===
+"NeoBundleLazy 'vim-ruby/vim-ruby', {
+"      \ 'autoload':{
+"      \   'filetypes':['ruby']
+"      \ }}
+"
+"
+"
+"" === Rails supports ===
+"NeoBundle 'taichouchou2/vim-rails'
+"NeoBundle 'romanvbabenko/rails.vim'
+"
+"
+"
+"" === HTML supports ===
+"NeoBundle 'othree/html5.vim', {
+"      \ 'autoloat':{
+"      \   'filetypes':['html']
+"      \ }}
+"
+"
+"
+"" === Slim supports ===
+"NeoBundle 'slim-template/vim-slim', {
+"      \ 'autoload':{
+"      \   'filetypes':['slim']
+"      \ }}
+"
+"
+"
+"" === Haml supports ===
+"NeoBundle 'tpope/vim-haml', {
+"      \ 'autoload':{
+"      \   'filetypes':['haml']
+"      \ }}
+"
+"
+"
+"" === Scss supports ===
+"NeoBundle 'cakebaker/scss-syntax.vim', {
+"      \ 'autoload':{
+"      \   'filetypes':['scss']
+"      \ }}
+"
+"
+"
+"" === Yaml supports ===
+"NeoBundle 'yaml.vim', {
+"      \ 'autoload':{
+"      \   'filetypes':['yml']
+"      \ }}
+"
+"
+"
+"" === Javascript supports ===
+"NeoBundle 'pangloss/vim-javascript'
+"NeoBundle 'mxw/vim-jsx'
+"
+"
+"
+"" === Json supports ===
+"NeoBundle 'elzr/vim-json'
+"
+"
+"
+"" === Coffeescript supports ===
+"NeoBundle 'kchmck/vim-coffee-script', {
+"      \ 'autoload':{
+"      \   'filetypes':['coffee']
+"      \ }}
+"
+"
+"
+"" === Markdown supports ===
+"NeoBundle 'kannokanno/previm'
+"NeoBundle 'tyru/open-browser.vim'
+"
+"
+"
+"" === Git supports ===
+"NeoBundle 'airblade/vim-gitgutter'
+"NeoBundle 'tpope/vim-fugitive'
+"NeoBundle 'cohama/agit.vim'
+"NeoBundle 'rhysd/committia.vim'
+"NeoBundle 'tpope/vim-fugitive.git'
+"NeoBundle 'gregsexton/gitv.git'
+"
+"
+"
+"call neobundle#end()
+"
+"
+""ファイルタイプ別のプラグイン/インデントを有効にする
+"filetype plugin indent on
+"
+"" === Install NeoBundle plugins not yet installed when vim is started ===
+"NeoBundleCheck
 
 
 """"""""""""""""""""""""""""""""""""""
@@ -241,85 +241,85 @@ NeoBundleCheck
 
 " neosnippet
 "{{{
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/,~/.vim/snippets/'
-"}}}
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"if has('conceal')
+"  set conceallevel=2 concealcursor=niv
+"endif
+"let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/,~/.vim/snippets/'
+""}}}
 
 
 " === vim-quickrun ===
 "{{{
-let g:quickrun_config={'*': {'split': ''}}
-let g:quickrun_config._={
-      \       'runner' : 'vimproc',
-      \       'runner/vimproc/updatetime' : 10,
-      \       'outputter/buffer/close_on_empty' : 1,
-      \       'hook/shabadoubi_touch_henshin/enable' : 1,
-      \       'hook/shabadoubi_touch_henshin/wait' : 20,
-      \ }
-set splitbelow
+" let g:quickrun_config={'*': {'split': ''}}
+" let g:quickrun_config._={
+"       \       'runner' : 'vimproc',
+"       \       'runner/vimproc/updatetime' : 10,
+"       \       'outputter/buffer/close_on_empty' : 1,
+"       \       'hook/shabadoubi_touch_henshin/enable' : 1,
+"       \       'hook/shabadoubi_touch_henshin/wait' : 20,
+"       \ }
+" set splitbelow
 "}}}
 
 
 " === Unit.vim ===
 "{{{
 " start with insert mode
-let g:unite_enable_start_insert = 1
-" don't distinguish up case and down case
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
-" close this by clicking twice esc key
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+" let g:unite_enable_start_insert = 1
+" " don't distinguish up case and down case
+" let g:unite_enable_ignore_case = 1
+" let g:unite_enable_smart_case = 1
+" " close this by clicking twice esc key
+" au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+" au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 "}}}
 
 
 " === syntastic ===
 "{{{
 " ref. https://github.com/scrooloose/syntastic#settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_enable_signs = 1 " show sign in the line having errors
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-
-let g:syntastic_html_tidy_exec = 'tidy5'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_enable_signs = 1 " show sign in the line having errors
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+"
+" let g:syntastic_javascript_checkers = ['eslint']
+"
+" let g:syntastic_html_tidy_exec = 'tidy5'
 "}}}
 
 
 " === emmet ===
 "{{{
-let g:user_emmet_mode = 'iv'
-let g:user_emmet_leader_key = '<C-Y>'
-let g:use_emmet_complete_tag = 1
-let g:user_emmet_settings = {
-      \ 'lang' : 'ja',
-      \ 'html' : {
-      \   'filters' : 'html',
-      \ },
-      \ 'css' : {
-      \   'filters' : 'fc',
-      \ },
-      \ 'php' : {
-      \   'extends' : 'html',
-      \   'filters' : 'html',
-      \ },
-      \}
-augroup EmmitVim
-  autocmd!
-  autocmd FileType * let g:user_emmet_settings.indentation = '               '[:&tabstop]
-augroup END
+" let g:user_emmet_mode = 'iv'
+" let g:user_emmet_leader_key = '<C-Y>'
+" let g:use_emmet_complete_tag = 1
+" let g:user_emmet_settings = {
+"       \ 'lang' : 'ja',
+"       \ 'html' : {
+"       \   'filters' : 'html',
+"       \ },
+"       \ 'css' : {
+"       \   'filters' : 'fc',
+"       \ },
+"       \ 'php' : {
+"       \   'extends' : 'html',
+"       \   'filters' : 'html',
+"       \ },
+"       \}
+" augroup EmmitVim
+"   autocmd!
+"   autocmd FileType * let g:user_emmet_settings.indentation = '               '[:&tabstop]
+" augroup END
 "}}}
 
 
@@ -336,23 +336,23 @@ augroup END
 "   diff_bufnr     : bufnr of diff window    -> ditto
 "   status_winnr   : winnr of status window  -> all hooks except for 'diff_open' hook
 "   status_bufnr   : bufnr of status window  -> ditto
-let g:committia_min_window_width = 100  " これ以下の幅では左右分割しない
-let g:committia_hooks = {}
-function! g:committia_hooks.edit_open(info)
-    " Additional settings
-    setlocal spell
-
-    " If no commit message, start with insert mode
-    if a:info.vcs ==# 'git' && getline(1) ==# ''
-        startinsert
-    end
-
-    " Scroll the diff window from insert mode
-    " Map <C-n> and <C-p>
-    imap <buffer><C-j> <Plug>(committia-scroll-diff-down-half)
-    imap <buffer><C-k> <Plug>(committia-scroll-diff-up-half)
-
-endfunction
+" let g:committia_min_window_width = 100  " これ以下の幅では左右分割しない
+" let g:committia_hooks = {}
+" function! g:committia_hooks.edit_open(info)
+"     " Additional settings
+"     setlocal spell
+"
+"     " If no commit message, start with insert mode
+"     if a:info.vcs ==# 'git' && getline(1) ==# ''
+"         startinsert
+"     end
+"
+"     " Scroll the diff window from insert mode
+"     " Map <C-n> and <C-p>
+"     imap <buffer><C-j> <Plug>(committia-scroll-diff-down-half)
+"     imap <buffer><C-k> <Plug>(committia-scroll-diff-up-half)
+"
+" endfunction
 "}}}
 
 
@@ -361,75 +361,75 @@ endfunction
 " === neocomplete ===
 "{{{
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" let g:acp_enableAtStartup = 0
+" " Use neocomplete.
+" let g:neocomplete#enable_at_startup = 1
+" " Use smartcase.
+" let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
+" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"
+" " Define dictionary.
+" let g:neocomplete#sources#dictionary#dictionaries = {
+"     \ 'default' : '',
+"     \ 'vimshell' : $HOME.'/.vimshell_hist',
+"     \ 'scheme' : $HOME.'/.gosh_completions'
+"         \ }
+"
+" " Define keyword.
+" if !exists('g:neocomplete#keyword_patterns')
+"     let g:neocomplete#keyword_patterns = {}
+" endif
+" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"
+" " Plugin key-mappings.
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
+"
+" " Recommended key-mappings.
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+"   " For no inserting <CR> key.
+"   "return pumvisible() ? "\<C-y>" : "\<CR>"
+" endfunction
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" " Close popup by <Space>.
+" "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+"
+" " AutoComplPop like behavior.
+" "let g:neocomplete#enable_auto_select = 1
+"
+" " Shell like behavior(not recommended).
+" "set completeopt+=longest
+" "let g:neocomplete#enable_auto_select = 1
+" "let g:neocomplete#disable_auto_complete = 1
+" "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+"
+" " Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"   let g:neocomplete#sources#omni#input_patterns = {}
+" endif
+" "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+" "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+" "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"
+" " For perlomni.vim setting.
+" " https://github.com/c9s/perlomni.vim
+" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "}}}
 
 
 
 " === vimshell ===
 "{{{
-let g:vimshell = 'mvim'
+" let g:vimshell = 'mvim'
 "}}}
 
 
@@ -453,14 +453,14 @@ let g:vimshell = 'mvim'
 
 " === nerdtree ===
 "{{{
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-" show bookmark from the beginning
-let g:NERDTreeShowBookmarks=1
-
-" ファイル指定で開かれた場合はNERDTreeは表示しない
-if !argc()
-  autocmd vimenter * NERDTree|normal gg3j
-endif
+" nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" " show bookmark from the beginning
+" let g:NERDTreeShowBookmarks=1
+"
+" " ファイル指定で開かれた場合はNERDTreeは表示しない
+" if !argc()
+"   autocmd vimenter * NERDTree|normal gg3j
+" endif
 "}}}
 
 
@@ -518,10 +518,10 @@ let g:clang_format#style_options = {
 
 " === html5.vim ===
 "{{{
-let g:html5_event_handler_attributes_complete = 0
-let g:html5_rdfa_attributes_complete = 0
-let g:html5_microdata_attributes_complete = 0
-let g:html5_aria_attributes_complete = 0
+" let g:html5_event_handler_attributes_complete = 0
+" let g:html5_rdfa_attributes_complete = 0
+" let g:html5_microdata_attributes_complete = 0
+" let g:html5_aria_attributes_complete = 0
 "}}}
 
 
@@ -530,47 +530,47 @@ let g:html5_aria_attributes_complete = 0
 
 " === lightline ===
 "{{{
-set laststatus=2
+" set laststatus=2
 "}}}
 
 
 
 " === vim-autoclose ===
 "{{{
-let g:auto_save = 1                     " デフォルトで有効にする
-let g:auto_save_in_insert_mode = 0      " インサートモード時は保存しない
+" let g:auto_save = 1                     " デフォルトで有効にする
+" let g:auto_save_in_insert_mode = 0      " インサートモード時は保存しない
 "}}}
 
 
 
 " === vim-gitgutter ===
 "{{{
-nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
-nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
+" nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+" nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 "}}}
 
 
 
 " === vim-jsx ===
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
 
 
 
 " === vim-json ===
-let g:vim_json_syntax_conceal = 0
+" let g:vim_json_syntax_conceal = 0
 
 
 
 " === vim-trailing-whitespace ===
 "{{{
 " Execute :FixWhitespace command before writing file to buffer
-autocmd BufWritePre * :FixWhitespace
+" autocmd BufWritePre * :FixWhitespace
 "}}}
 
 
 " === TwitVim ===
-let twitvim_browser_cmd = 'open'
-let twitvim_force_ssl = 1
+" let twitvim_browser_cmd = 'open'
+" let twitvim_force_ssl = 1
 " let twitvim_count = 40
 
 
@@ -629,6 +629,7 @@ set virtualedit=block   "文字のないところにカーソル移動できる�
 set whichwrap=b,s,[,],<,>
 set wildmenu            "コマンドライン補完を拡張モードにする
 " set wrap                "ウィンドウの幅より長い行は折り返した、次の行に表示する
+set shortmess+=I        "vimの初期画面を表示させない
 
 " ペーストモードの挿入モードからノーマルモードに戻る時にペーストモードを解除する
 autocmd InsertLeave * set nopaste
@@ -681,11 +682,11 @@ endif
 "{{{
 
 "コードの色分け"
-let g:hybrid_use_iTerm_colors = 1
-set t_Co=256
-syntax enable
-colorscheme hybrid
-set background=dark
+" let g:hybrid_use_iTerm_colors = 1
+" set t_Co=256
+" syntax enable
+" colorscheme hybrid
+" set background=dark
 
 " 補完候補の色づけ for vim7
 hi Pmenu ctermbg=255 ctermfg=0 guifg=#000000 guibg=#999999
@@ -854,17 +855,39 @@ endif
 " Required:
 set runtimepath+=/Users/atsuyoshi/.cache/dein/repos/github.com/Shougo/dein.vim
 
+" プラグインが実際にインストールされるディレクトリ
+let s:dein_dir = expand('~/.cache/dein')
+" dein.vim 本体
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
 " Required:
-if dein#load_state('/Users/atsuyoshi/.cache/dein')
-  call dein#begin('/Users/atsuyoshi/.cache/dein')
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/atsuyoshi/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add(s:dein_repo_dir)
+
+  " プラグインリストを収めたTOMLファイル
+  let g:rc_dir    = expand('~/dotfiles/.vim/rc')
+  let s:toml      = g:rc_dir . '/dein.toml'
+  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+
+
+  if ((has('nvim')  || has('timers')) && has('python3')) && system('pip3 show neovim') !=# ''
+    call dein#add('Shougo/deoplete.nvim')
+    if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+  endif
+  "TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 0})
 
   " Add or remove your plugins here like this:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
+  " call dein#add('Shougo/neosnippet.vim')
+  " call dein#add('Shougo/neosnippet-snippets')
 
   " Required:
   call dein#end()
@@ -882,3 +905,4 @@ endif
 
 "End dein Scripts-------------------------
 
+" ~/.pyenv/shimsを$PATHに追加

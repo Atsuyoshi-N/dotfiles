@@ -1,3 +1,5 @@
+"fix bug happened when vim opened
+:set shell=zsh
 """"""""""""""""""""""""""""""""""""""
 " NeoBundle
 """"""""""""""""""""""""""""""""""""""
@@ -800,7 +802,7 @@ set clipboard=unnamed,autoselect  " ヤンクした文字は、システムの�
 set visualbell t_vb=              " エラービープ音を鳴らさない
 set noerrorbells
 set encoding=utf-8
-set fileencodings=utf-8
+set fileencodings=utf-8,cp932,iso-2022-jp,euc-jp,sjis,
 set fileformats=unix,dos,mac
 
 
@@ -843,3 +845,40 @@ set backupskip=/tmp/*,/private/tmp/*
 
 "ヤンクした内容がclipboardに保持される"
 set clipboard+=unnamed
+
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/Users/atsuyoshi/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/Users/atsuyoshi/.cache/dein')
+  call dein#begin('/Users/atsuyoshi/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/atsuyoshi/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here like this:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+

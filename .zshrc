@@ -170,6 +170,7 @@ export NODEBREW_HOME
 export NODEBREW_ROOT=/usr/local/var/nodebrew
 
 export PATH=$PATH:$NODEBREW_HOME/bin
+#export PATH=/usr/local/bin:${PATH}
 eval "$(rbenv init -)"
 
 eval "$(pyenv init -)"
@@ -178,4 +179,4 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-#export PATH=/usr/local/bin:${PATH}
+export PATH=$PATH:/Users/atsuyoshi/.nodebrew/current/bin

@@ -8,15 +8,15 @@ on_ft = 'toml'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_source = '''
-  let g:deoplete#enable_at_startup = 1
-  inoremap <expr><tab> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-'''
-on_i = 1
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
+#hook_source = '''
+#  let g:deoplete#enable_at_startup = 1
+#  inoremap <expr><tab> pumvisible() ? "\<C-n>" :
+#        \ neosnippet#expandable_or_jumpable() ?
+#        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+#'''
+#on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -295,29 +295,19 @@ repo =  'thinca/vim-ref'
 repo =  'altercation/vim-colors-solarized'
 
 [[plugins]]
-repo =  'w0ng/vim-hybrid'
-hook_add  = '''
-  let g:hybrid_use_iTerm_colors = 1
-  set background=dark
-  syntax enable
-  set t_Co=256
-  colorscheme hybrid
-  " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
-  " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
-  " au MyAutoCmd VimEnter * nested colorscheme hybrid
-'''
-# let g:hybrid_use_iTerm_colors = 1
-# set t_Co=256
-# syntax enable
-# colorscheme hybrid
-# set background=dark
-
-[[plugins]]
 repo =  'abra/vim-obsidian'
 
 [[plugins]]
 repo =  'flazz/vim-colorschemes'
 
+[[plugins]]
+repo =  'w0ng/vim-hybrid'
+hook_add = '''
+  set background=dark
+  " colorscheme設定はsource後に行う必要があるのでVimEnterで行う
+  " ただしColorschemeイベントの発生が抑制されないようnestedをつける
+  au MyAutoCmd VimEnter * nested colorscheme hybrid
+'''
 
 
 # === Coloring color code ===

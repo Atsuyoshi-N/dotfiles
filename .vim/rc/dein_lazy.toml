@@ -108,3 +108,16 @@ repo = 'rhysd/committia.vim'
 
 [[plugins]]
 repo = 'gregsexton/gitv.git'
+
+# === TeX support ===
+# https://qiita.com/ssh0/items/4aea2d3849667717b36d
+# https://qiita.com/ssh0/items/e6d7540cd46fac580bc2
+[[plugins]]
+repo = 'lervag/vimtex'
+on_ft = 'tex'
+hook_add = '''
+  let g:vimtex_fold_envs = 0
+  let g:vimtex_view_general_viewer = 'Skim'
+  let g:tex_conceal=''
+'''
+

@@ -12,6 +12,7 @@ endif
 
 " Required:
 set runtimepath+=/Users/atsuyoshi/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/Users/atsuyoshi/.cache/dein/repos/github.com/Shougo/vimproc.vim/autoload/vimproc.vim
 
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
@@ -85,6 +86,7 @@ au BufNewFile,BufRead *.md setf markdown
 au BufNewFile,BufRead *.yml setf yaml
 au BufNewFile,BufRead *.php setf php
 au BufNewFile,BufRead *.sh setf sh
+au BufNewFile,BufRead *.tex setf tex
 
 """"""""""""""""""""""""""""""""""""""
 " 表示設定

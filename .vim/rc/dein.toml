@@ -181,15 +181,11 @@ hook_add = '''
   nnoremap <silent><C-e> :NERDTreeToggle<CR>
   " show bookmark from the beginning
   let g:NERDTreeShowBookmarks=1
-'''
-hook_post_update = '''
   " ファイル指定で開かれた場合はNERDTreeは表示しない
   if !argc()
     autocmd vimenter * NERDTree|normal gg3j
   endif
 '''
-
-
 
 # === Power up completion ===
 # NeoBundle 'marcus/rsense'
@@ -335,6 +331,8 @@ repo = 'rhysd/vim-clang-format'
 hook_add = '''
   " ref: http://algo13.net/clang/clang-format-style-oputions.html
   " ref: http://yasuharu519.hatenablog.com/entry/2015/12/13/210825
+  " C++14 support
+  let g:syntastic_cpp_compiler_options = '-std=c++14'
   let g:clang_format#style_options = {
         \ "Language": "Cpp",
         \ "BasedOnStyle": "LLVM",

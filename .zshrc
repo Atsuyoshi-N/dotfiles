@@ -1,20 +1,4 @@
 # -------------------------------------
-# 環境変数
-# -------------------------------------
-
-# SSHで接続した先で日本語が使えるようにする
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-# エディタ
-export EDITOR=/usr/bin/vim
-
-# ページャ
-export PAGER=/usr/local/bin/vimpager
-export MANPAGER=/usr/local/bin/vimpager
-
-
-# -------------------------------------
 # zshのオプション
 # -------------------------------------
 
@@ -57,12 +41,12 @@ setopt auto_cd
 # 重複する要素を自動的に削除
 typeset -U path cdpath fpath manpath
 
-path=(
-    $HOME/bin(N-/)
-    /usr/local/bin(N-/)
-    /usr/local/sbin(N-/)
-    $path
-)
+# path=(
+#     $HOME/bin(N-/)
+#     /usr/local/bin(N-/)
+#     /usr/local/sbin(N-/)
+#     $path
+# )
 
 # -------------------------------------
 # プロンプト
@@ -130,7 +114,7 @@ alias g='git'
 alias gffc='git flow feature checkout'
 
 # vim
-alias vim='nvim'
+alias vim='TERM=xterm-256color nvim'
 
 # -------------------------------------
 # キーバインド
@@ -160,25 +144,6 @@ function title {
     echo -ne "\033]0;"$*"\007"
 }
 
-if [ -x "`which go`" ]; then
-    export GOPATH=$HOME/.go
-    export PATH=$PATH:$GOPATH/bin
-fi
-
-#export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
-NODEBREW_HOME=/usr/local/var/nodebrew/current
-export NODEBREW_HOME
-export NODEBREW_ROOT=/usr/local/var/nodebrew
-
-export PATH=$PATH:$NODEBREW_HOME/bin
-#export PATH=/usr/local/bin:${PATH}
 eval "$(rbenv init -)"
-
+#
 eval "$(pyenv init -)"
-
-export PATH="$HOME/.pyenv/shims:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="$HOME/.nodebrew/current/bin:$PATH"
-export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-export PATH=$PATH:/Users/atsuyoshi/.nodebrew/current/bin
-export XDG_CONFIG_HOME=$HOME/.config # neovim

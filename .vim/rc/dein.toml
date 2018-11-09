@@ -361,10 +361,19 @@ hook_add = '''
 repo = 'rhysd/vim-operator-surround'
 hook_add = '''
   " 括弧を追加する
-  map <silent> sa <Plug>(operator-surround-append)
+  map <silent> Sa <Plug>(operator-surround-append)
   " 括弧を削除する
-  map <silent> sd <Plug>(operator-surround-delete)
+  map <silent> Sd <Plug>(operator-surround-delete)
   " 括弧を入れ替える
-  map <silent> sr <Plug>(operator-surround-replace)
+  map <silent> Sr <Plug>(operator-surround-replace)
 '''
+
+# === かっこjump
+[[plugins]]
+repo = 'andymass/vim-matchup'
+hook_add = 'let g:loaded_matchit = 1'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+hook_add = 'let g:lexima_enable_basic_rules = 1'
 

@@ -129,8 +129,9 @@ alias ta="tmux a"
 alias g='git'
 alias gffc='git flow feature checkout'
 
-#hubble
-alias hubble_ssh="ssh -i ~/.ssh/HUBBLE_RELEASE.pem ec2-user@ec2-52-196-159-26.ap-northeast-1.compute.amazonaws.com"
+# vim
+alias vim='nvim'
+
 # -------------------------------------
 # キーバインド
 # -------------------------------------
@@ -180,3 +181,4 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 export PATH=$PATH:/Users/atsuyoshi/.nodebrew/current/bin
+export XDG_CONFIG_HOME=$HOME/.config # neovim

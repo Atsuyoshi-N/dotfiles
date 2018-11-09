@@ -272,7 +272,11 @@ set backupdir=$HOME/.vim/backup     " バックアップファイルのディレ
 set nocompatible                  " vi互換をオフする
 set directory=$HOME/.vim/backup     " スワップファイル用のディレクトリを指定する
 set mouse=a                       " マウス操作をできるようにする
-set clipboard=unnamed,autoselect  " ヤンクした文字は、システムのクリップボードに入れる
+if has('nvim')
+  set clipboard+=unnamedplus        " NeoVim用のクリップボード設定
+else
+  set clipboard=unnamed,autoselect  " ヤンクした文字は、システムのクリップボードに入れる
+endif
 set visualbell t_vb=              " エラービープ音を鳴らさない
 set noerrorbells
 set encoding=utf-8
@@ -315,6 +319,6 @@ endif
 "crontab用にtmp/以下にバックアップを作成しない(tmp以下にバックアップを作成すると怒られる)
 set backupskip=/tmp/*,/private/tmp/*
 
-"ヤンクした内容がclipboardに保持される"
-set clipboard+=unnamed
+" neovim
+set termguicolors
 

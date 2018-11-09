@@ -18,13 +18,20 @@ on_ft = 'ruby'
 
 [[plugins]]
 repo = 'taichouchou2/vim-rails'
+on_ft = 'ruby'
 
 [[plugins]]
 repo = 'romanvbabenko/rails.vim'
+on_ft = 'ruby'
 
 
 [[plugins]] # Rubyのメソッドの定義元にジャンプ
 repo = 'szw/vim-tags'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'ngmy/vim-rubocop'
+on_ft = 'ruby'
 
 # === HTML, scss, Haml, Slim ===
 # HTML support

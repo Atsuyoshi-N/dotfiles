@@ -114,7 +114,7 @@ alias g='git'
 alias gffc='git flow feature checkout'
 
 # vim
-alias vim='TERM=xterm-256color nvim'
+alias vim='nvim'
 
 # -------------------------------------
 # キーバインド

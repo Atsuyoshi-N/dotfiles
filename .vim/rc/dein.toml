@@ -158,3 +158,7 @@ hook_add = 'let g:lexima_enable_basic_rules = 1'
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
+repo = 'vim-syntastic/syntastic'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-syntastic.rc.vim'

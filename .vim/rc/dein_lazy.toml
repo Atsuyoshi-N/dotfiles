@@ -67,12 +67,21 @@ on_ft = 'javascript'
 
 [[plugins]] # jsx
 repo = 'mxw/vim-jsx'
-hook_add = 'let g:jsx_ext_required = 0'
+hook_source = 'let g:jsx_ext_required = 0'
 on_ft = 'javascript'
+
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'othree/javascript-libraries-syntax.vim'
+on_ft = 'javascript'
+hook_source = 'source ~/dotfiles/.vim/rc/plugins/javascript-libraries-syntax.rc.vim'
 
 [[plugins]] # json
 repo = 'elzr/vim-json'
-hook_add = 'let g:vim_json_syntax_conceal = 0'
+hook_source = 'let g:vim_json_syntax_conceal = 0'
 on_ft = 'json'
 
 [[plugins]]
@@ -114,5 +123,5 @@ repo = 'gregsexton/gitv.git'
 [[plugins]]
 repo = 'lervag/vimtex'
 on_ft = 'tex'
-hook_add = 'source ~/dotfiles/.vim/rc/plugins/vimtex.rc.vim'
+hook_source = 'source ~/dotfiles/.vim/rc/plugins/vimtex.rc.vim'
 

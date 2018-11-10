@@ -9,6 +9,7 @@ au BufNewFile,BufRead *.slim   setf slim
 au BufNewFile,BufRead *.scss   setf scss
 au BufNewFile,BufRead *.js     setf javascript
 au BufNewFile,BufRead *.jsx    setf javascript
+au BufNewFile,BufRead *.vue    setf javascript
 au BufNewFile,BufRead *.json   setf json
 au BufNewFile,BufRead *.coffee setf coffee
 au BufNewFile,BufRead *.md     setf markdown

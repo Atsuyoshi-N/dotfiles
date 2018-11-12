@@ -19,4 +19,7 @@ au BufNewFile,BufRead *.sh     setf sh
 au BufNewFile,BufRead *.tex    setf tex
 
 au BufNewFile,BufRead *.cpp 0read ${HOME}/dotfiles/.vim/template/cpp.txt
+autocmd BufNewFile,BufRead *.jsx    setfiletype javascript
+autocmd BufNewFile,BufRead *.es6    setfiletype javascript
+autocmd BufNewFile,BufRead *.vue    setfiletype html
 

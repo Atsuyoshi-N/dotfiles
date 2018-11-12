@@ -9,7 +9,6 @@ au BufNewFile,BufRead *.slim   setf slim
 au BufNewFile,BufRead *.scss   setf scss
 au BufNewFile,BufRead *.js     setf javascript
 au BufNewFile,BufRead *.jsx    setf javascript
-au BufNewFile,BufRead *.vue    setf javascript
 au BufNewFile,BufRead *.json   setf json
 au BufNewFile,BufRead *.coffee setf coffee
 au BufNewFile,BufRead *.md     setf markdown
@@ -17,8 +16,11 @@ au BufNewFile,BufRead *.yml    setf yaml
 au BufNewFile,BufRead *.php    setf php
 au BufNewFile,BufRead *.sh     setf sh
 au BufNewFile,BufRead *.tex    setf tex
+au BufNewFile,BufRead *.vue    syntax sync fromstart
 
-au BufNewFile,BufRead *.cpp 0read ${HOME}/dotfiles/.vim/template/cpp.txt
+" ファイル新規作成時のみテンプレートを読み込むようにする
+au BufNewFile *.cpp 0read ${HOME}/dotfiles/.vim/template/cpp.txt
+
 autocmd BufNewFile,BufRead *.jsx    setfiletype javascript
 autocmd BufNewFile,BufRead *.es6    setfiletype javascript
 autocmd BufNewFile,BufRead *.vue    setfiletype html

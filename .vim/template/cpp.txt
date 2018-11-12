@@ -21,8 +21,8 @@ using namespace std;
 template<class T>bool chmax(T &a, const T &b) { return (a<b)?(a=b,1):0;}
 template<class T>bool chmin(T &a, const T &b) { return (b<a)?(a=b,1):0;}
 
-using ll=long long;
-using R=long double;
+typedef long long ll;
+typedef long double R;
 const R EPS=1e-9L; // [-1000,1000]->EPS=1e-8 [-10000,10000]->EPS=1e-7
 inline int sgn(const R& r){return(r > EPS)-(r < -EPS);}
 inline R sq(R x){return sqrt(max(x,0.0L));}
@@ -34,6 +34,6 @@ const int dy[8]={0,1,0,-1,1,1,-1,-1};
 
 int main() {
 
-  return 0
+  return 0;
 }
 

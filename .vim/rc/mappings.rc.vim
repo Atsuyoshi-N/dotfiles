@@ -1,6 +1,8 @@
 """"""""""""""""""""""""""""""""""""""
 " マッピング
 """"""""""""""""""""""""""""""""""""""
+" leader キーとして<Space>を登録
+let mapleader = "\<Space>"
 inoremap <silent> jk <ESC>
 
 noremap <S-h> ^

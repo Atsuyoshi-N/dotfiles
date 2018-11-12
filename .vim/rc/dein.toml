@@ -167,3 +167,7 @@ hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-syntastic.rc.vim'
 repo = 'scrooloose/nerdcommenter'
 hook_add = 'source ~/dotfiles/.vim/rc/plugins/nerdcommenter.rc.vim'
 
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-easy-align.rc.vim'
+

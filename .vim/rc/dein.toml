@@ -162,3 +162,8 @@ repo = 'roxma/vim-hug-neovim-rpc'
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
 hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-syntastic.rc.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/nerdcommenter.rc.vim'
+

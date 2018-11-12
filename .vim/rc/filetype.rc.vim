@@ -25,3 +25,5 @@ autocmd BufNewFile,BufRead *.jsx    setfiletype javascript
 autocmd BufNewFile,BufRead *.es6    setfiletype javascript
 autocmd BufNewFile,BufRead *.vue    setfiletype html
 
+filetype plugin on
+

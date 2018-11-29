@@ -116,6 +116,9 @@ alias gffc='git flow feature checkout'
 # vim
 alias vim='nvim'
 
+# g++
+alias g++='g++ -std=c++17'
+
 # -------------------------------------
 # キーバインド
 # -------------------------------------

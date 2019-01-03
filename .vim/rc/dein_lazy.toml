@@ -68,24 +68,20 @@ on_ft = 'javascript'
 [[plugins]] # jsx
 repo = 'mxw/vim-jsx'
 hook_source = 'let g:jsx_ext_required = 0'
-on_ft = 'javascript'
+on_ft = ['javascript', 'javascript.jsx']
 
 [[plugins]]
 repo = 'othree/yajs.vim'
-on_ft = 'javascript'
+on_ft = ['javascript', 'javascript.jsx']
 
 [[plugins]]
 repo = 'othree/javascript-libraries-syntax.vim'
-on_ft = 'javascript'
+on_ft = ['javascript', 'javascript.jsx']
 hook_source = 'source ~/dotfiles/.vim/rc/plugins/javascript-libraries-syntax.rc.vim'
 
 [[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-on_ft = 'javascript'
-
-[[plugins]]
 repo = 'ternjs/tern_for_vim'
-on_ft = 'javascript'
+on_ft = ['javascript', 'javascript.jsx']
 
 [[plugins]]
 repo = 'posva/vim-vue'

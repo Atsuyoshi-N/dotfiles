@@ -21,7 +21,6 @@ au BufNewFile,BufRead *.vue    syntax sync fromstart
 " ファイル新規作成時のみテンプレートを読み込むようにする
 au BufNewFile *.cpp 0read ${HOME}/dotfiles/.vim/template/cpp.txt
 
-autocmd BufNewFile,BufRead *.jsx    setfiletype javascript
 autocmd BufNewFile,BufRead *.es6    setfiletype javascript
 autocmd BufNewFile,BufRead *.vue    setfiletype html
 

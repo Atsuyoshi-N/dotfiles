@@ -35,7 +35,7 @@ if dein#load_state(s:dein_dir)
   " endif
   "TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   " Add or remove your plugins here like this:
   " call dein#add('Shougo/neosnippet.vim')
@@ -47,6 +47,7 @@ if dein#load_state(s:dein_dir)
 endif
 
 " Required:
+filetype plugin on
 filetype plugin indent on
 syntax enable
 

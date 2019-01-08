@@ -133,3 +133,6 @@ repo = 'lervag/vimtex'
 on_ft = 'tex'
 hook_source = 'source ~/dotfiles/.vim/rc/plugins/vimtex.rc.vim'
 
+[[plugins]]
+repo = 'qnighy/satysfi.vim'
+on_ft = 'saty'

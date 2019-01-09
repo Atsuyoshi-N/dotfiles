@@ -39,7 +39,8 @@ repo = 'osyo-manga/shabadou.vim'
 
 # === Check syntax ===
 [[plugins]]
-repo = 'scrooloose/syntastic'
+repo = 'vim-syntastic/syntastic'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/syntastic.rc.vim'
 
 [[plugins]]
 repo = 'pmsorhaindo/syntastic-local-eslint.vim'

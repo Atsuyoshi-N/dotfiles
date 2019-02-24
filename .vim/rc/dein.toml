@@ -87,6 +87,10 @@ repo = 'scrooloose/nerdtree'
 hook_add = 'source ~/dotfiles/.vim/rc/plugins/nerdtree.rc.vim'
 
 [[plugins]]
+repo =  'Shougo/neocomplete.vim'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/neocomplete.rc.vim'
+
+[[plugins]]
 repo =  'Shougo/neocomplcache'
 
 [[plugins]]

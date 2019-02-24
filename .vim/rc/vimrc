@@ -29,6 +29,9 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+" has('python3')
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 call s:source_rc('dein.rc.vim')
 call s:source_rc('filetype.rc.vim')
 call s:source_rc('mappings.rc.vim')

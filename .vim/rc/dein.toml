@@ -177,3 +177,10 @@ repo = 'prabirshrestha/async.vim'
 repo = 'prabirshrestha/vim-lsp'
 hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-lsp.rc.vim'
 
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/asyncomplete.rc.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+

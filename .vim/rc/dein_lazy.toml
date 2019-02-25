@@ -72,6 +72,11 @@ on_ft = 'yml'
 repo = 'pangloss/vim-javascript'
 on_ft = 'javascript'
 
+[[plugins]]
+repo = 'ryanolsonx/vim-lsp-javascript'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-lsp-javascript.rc.vim'
+on_ft = ['javascript', 'javascript.jsx', 'vue']
+
 [[plugins]] # jsx
 repo = 'mxw/vim-jsx'
 hook_source = 'let g:jsx_ext_required = 0'

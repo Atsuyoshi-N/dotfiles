@@ -27,3 +27,24 @@ let g:deoplete#enable_at_startup = 1
 ```
 * Reference
   * [Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
+
+### vim-lsp
+1. Add plugins to .toml file
+dein.toml
+```
+[[plugin]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugin]]
+repo = 'prabirshrestha/vim-lsp'
+```
+
+2. Set up for each language
+* [C, C++](https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Clangd)
+* [CSS/Less/Sass](https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Css)
+* [Docker](https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Docker)
+* [Go](https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go)
+* [Javascript](https://github.com/prabirshrestha/vim-lsp/wiki/Servers-JavaScript)
+* [Python](https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Python)
+* [Ruby](https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby)
+* [TypeScript](https://github.com/prabirshrestha/vim-lsp/wiki/Servers-TypeScript)

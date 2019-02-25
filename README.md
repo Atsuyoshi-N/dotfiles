@@ -33,10 +33,10 @@ let g:deoplete#enable_at_startup = 1
 1. Add plugins to .toml file
 dein.toml
 ```
-[[plugin]]
+[[plugins]]
 repo = 'prabirshrestha/async.vim'
 
-[[plugin]]
+[[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 ```
 

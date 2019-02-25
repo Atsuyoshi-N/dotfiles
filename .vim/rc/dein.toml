@@ -169,3 +169,11 @@ hook_add = 'source ~/dotfiles/.vim/rc/plugins/nerdcommenter.rc.vim'
 repo = 'junegunn/vim-easy-align'
 hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-easy-align.rc.vim'
 
+# Language Server Protocol
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-lsp.rc.vim'
+

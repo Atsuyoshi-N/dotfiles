@@ -23,6 +23,8 @@ au BufNewFile *.cpp 0read ${HOME}/dotfiles/.vim/template/cpp.txt
 
 autocmd BufNewFile,BufRead *.es6    setfiletype javascript
 autocmd BufNewFile,BufRead *.vue    setfiletype html
+" Completion Resultにdocstringを表示しない
+autocmd FileType python setlocal completeopt-=preview
 
 filetype plugin on
 

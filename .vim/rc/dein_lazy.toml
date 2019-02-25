@@ -40,6 +40,16 @@ on_ft = 'ruby'
 repo = 'ngmy/vim-rubocop'
 on_ft = 'ruby'
 
+# === Python support ===
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'ryanolsonx/vim-lsp-python'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-lsp-python.rc.vim'
+on_ft = 'python'
+
 # === HTML, scss, Haml, Slim ===
 # HTML support
 [[plugins]]
@@ -145,6 +155,7 @@ repo = 'lervag/vimtex'
 on_ft = 'tex'
 hook_source = 'source ~/dotfiles/.vim/rc/plugins/vimtex.rc.vim'
 
+# === Satysfi support ===
 [[plugins]]
 repo = 'qnighy/satysfi.vim'
 on_ft = 'saty'

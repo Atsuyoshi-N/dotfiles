@@ -3,6 +3,7 @@
 # Setup
 ### neovim
 ## Dein
+Plugins that require additional configuration and their setting method are shown below.
 ### Deoplete
 1. Check Python3 support
 If `:echo has("python3")` returns 1, follow next steps

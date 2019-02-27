@@ -7,9 +7,10 @@ Plugins that require additional configuration and their setting method are shown
 ### Deoplete
 <details>
  <summary> Deoplete.nvim Settings</summary>
- ## Heading
-1. Check Python3 support
-If `:echo has("python3")` returns 1, follow next steps
+ 
+ 1. Check Python3 support
+ If `:echo has("python3")` returns 1, follow next steps
+
 
 2. point Python3 PATH, and install pynvim
 .vimrc

@@ -3,11 +3,15 @@
 """"""""""""""""""""""""""""""""""""""
 " leader キーとして<Space>を登録
 let mapleader = "\<Space>"
+" ESCをjkに
 inoremap <silent> jk <ESC>
 
 noremap <S-h> ^
 noremap <S-l> $
 
+" ノーマルモードで表示行単位での移動を可能に
+nnoremap j gj
+nnoremap k gk
 "カーソル前の文字削除
 inoremap <silent> <C-h> <C-g>u<C-h>
 "カーソル後の文字削除

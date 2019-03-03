@@ -5,14 +5,15 @@ on_ft = 'go'
 
 [[plugins]] # go complete
 repo = 'zchee/deoplete-go'
+depends = ['deoplete.nvim']
 on_ft = 'go'
 
 # === Clang ===
 [[plugins]]
 repo = 'zchee/deoplete-clang'
+depends = ['deoplete.nvim']
 on_ft = ['c', 'cpp', 'cmake']
 hook_add = 'source ~/dotfiles/.vim/rc/plugins/deoplete-clang.rc.vim'
-depends = ['deoplete.nvim']
 
 # === Ruby / Rails ===
 [[plugins]] # ruby support
@@ -21,6 +22,7 @@ on_ft = 'ruby'
 
 [[plugins]] # ruby auto complete
 repo = 'fishbullet/deoplete-ruby'
+depends = ['deoplete.nvim']
 on_ft = 'ruby'
 
 [[plugins]]
@@ -79,8 +81,18 @@ on_ft = 'yml'
 
 # === JavaScript support ===
 [[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = 'javascript'
+repo = 'ternjs/tern_for_vim'
+on_ft = ['javascript', 'javascript.jsx', 'jsx', 'vue']
+
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+depends = ['deoplete.nvim']
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/deoplete-ternjs.rc.vim'
+on_ft = ['javascript', 'javascript.jsx', 'jsx', 'vue']
+
+#[[plugins]]
+#repo = 'pangloss/vim-javascript'
+#on_ft = 'javascript'
 
 [[plugins]]
 repo = 'ryanolsonx/vim-lsp-javascript'
@@ -96,14 +108,10 @@ on_ft = ['javascript', 'javascript.jsx']
 repo = 'othree/yajs.vim'
 on_ft = ['javascript', 'javascript.jsx']
 
-[[plugins]]
-repo = 'othree/javascript-libraries-syntax.vim'
-on_ft = ['javascript', 'javascript.jsx']
-hook_source = 'source ~/dotfiles/.vim/rc/plugins/javascript-libraries-syntax.rc.vim'
-
-[[plugins]]
-repo = 'ternjs/tern_for_vim'
-on_ft = ['javascript', 'javascript.jsx']
+#[[plugins]]
+#repo = 'othree/javascript-libraries-syntax.vim'
+#on_ft = ['javascript', 'javascript.jsx']
+#hook_source = 'source ~/dotfiles/.vim/rc/plugins/javascript-libraries-syntax.rc.vim'
 
 [[plugins]]
 repo = 'posva/vim-vue'

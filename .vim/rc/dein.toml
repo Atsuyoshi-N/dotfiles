@@ -13,6 +13,7 @@ on_ft = 'toml'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/neosnippet-snippets.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -28,7 +29,7 @@ depends = 'neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/vimshell.vim'
-hook_add = ' let g:vimshell = "mvim""'
+hook_add = 'let g:vimshell = "nvim"'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -85,20 +86,6 @@ hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-trailing-whitespace.rc.vim'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = 'source ~/dotfiles/.vim/rc/plugins/nerdtree.rc.vim'
-
-# [[plugins]]
-# repo =  'Shougo/neocomplete.vim'
-# hook_add = 'source ~/dotfiles/.vim/rc/plugins/neocomplete.rc.vim'
-
-[[plugins]]
-repo =  'Shougo/neocomplcache'
-
-[[plugins]]
-repo =  'Shougo/neosnippet'
-
-[[plugins]]
-repo =  'Shougo/neosnippet-snippets'
-hook_add = 'source ~/dotfiles/.vim/rc/plugins/neosnippet-snippets.rc.vim'
 
 # === Show dictionary in vim ===
 [[plugins]]

@@ -3,6 +3,7 @@
 """"""""""""""""""""""""""""""""""""""
 " leader キーとして<Space>を登録
 let mapleader = "\<Space>"
+
 " ESCをjkに
 inoremap <silent> jk <ESC>
 
@@ -12,6 +13,7 @@ noremap <S-l> $
 " ノーマルモードで表示行単位での移動を可能に
 nnoremap j gj
 nnoremap k gk
+
 "カーソル前の文字削除
 inoremap <silent> <C-h> <C-g>u<C-h>
 "カーソル後の文字削除
@@ -65,4 +67,23 @@ endfunction
 " Ctrl-Hに割り当て
 inoremap <silent> <C-h> <C-R>=DeleteParenthesesAdjoin()<CR>
 "}}}
+
+""""""""""""""""""""""""""""""""""""""
+" vim-easy-align
+""""""""""""""""""""""""""""""""""""""
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+vmap ga <Plug>(EasyAlign)
+
+""""""""""""""""""""""""""""""""""""""
+" LSP keymap settings
+""""""""""""""""""""""""""""""""""""""
+nmap <silent> <Leader>d :LspDefinition<CR>
+nmap <silent> <Leader>p :LspHover<CR>
+nmap <silent> <Leader>r :LspReferences<CR>
+nmap <silent> <Leader>i :LspImplementation<CR>
+nmap <silent> <Leader>s :split \| :LspDefinition <CR>
+nmap <silent> <Leader>v :vsplit \| :LspDefinition <CR>
 

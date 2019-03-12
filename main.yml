@@ -16,6 +16,8 @@
       - HyperSwitch
     brew_packages:
       # brew_listのパッケージを追加
+      - boost
+      - chromedriver
       - tree
       - neovim
   tasks:

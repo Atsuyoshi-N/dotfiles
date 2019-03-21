@@ -24,6 +24,8 @@
       - virtualbox
     brew_packages:
       # brew_listのパッケージを追加
+      # If you want to localize your list, paste the result of executing next command
+      # echo `brew list` >> sample.txt
       - ansible
       - autoconf
       - boost

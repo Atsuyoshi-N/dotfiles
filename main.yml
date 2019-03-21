@@ -12,14 +12,127 @@
       - caskroom/cask
     brew_cask_apps:
       # /Appliationsに入れるアプリを追加(Alfredの検索対象)
+      - google-chrome
+      - google-japanese-ime
       - firefox
-      - HyperSwitch
+      - hyperswitch
+      - alfred
+      - gyazo
+      - iterm2
+      - visual-studio-code
+      - sequel-pro
+      - virtualbox
     brew_packages:
       # brew_listのパッケージを追加
+      - ansible
+      - autoconf
       - boost
       - chromedriver
-      - tree
+      - cmake
+      - cmatrix
+      - ctags
+      - eigen
+      - ffmpeg
+      - fontconfig
+      - freetype
+      - fzf
+      - gcc
+      - gcc@5
+      - gd
+      - gdbm
+      - gettext
+      - ghostscript
+      - gibo
+      - git-flow
+      - git-now
+      - gmp
+      - gnu-getopt
+      - go
+      - graphviz
+      - htop
+      - hub
+      - icu4c
+      - ilmbase
+      - imagemagick@6
+      - isl
+      - jemalloc
+      - jpeg
+      - jq
+      - lame
+      - libevent
+      - libffi
+      - libidn
+      - libmpc
+      - libogg
+      - libpng
+      - libtermkey
+      - libtiff
+      - libtool
+      - libuv
+      - libvorbis
+      - libvpx
+      - libvterm
+      - libyaml
+      - llvm
+      - lua
+      - luajit
+      - mecab
+      - mecab-ipadic
+      - mongodb
+      - mono
+      - mpfr
+      - msgpack
+      - mupdf
+      - mysql
+      - mysql@5.6
       - neovim
+      - nkf
+      - node
+      - nodebrew
+      - numpy
+      - ocaml
+      - oniguruma
+      - opam
+      - openblas
+      - opencv
+      - openexr
+      - openssl
+      - opus
+      - p7zip
+      - pcre
+      - perl
+      - phantomjs
+      - pkg-config
+      - postgresql
+      - protobuf
+      - python
+      - python@2
+      - rbenv
+      - readline
+      - reattach-to-user-namespace
+      - redis
+      - ruby
+      - ruby-build
+      - sdl2
+      - siege
+      - snappy
+      - sqlite
+      - tbb
+      - theora
+      - tig
+      - tmux
+      - tree
+      - unar
+      - unibilium
+      - vim
+      - webp
+      - x264
+      - x265
+      - xvid
+      - xz
+      - yarn
+      - zsh
+
   tasks:
     # https://docs.ansible.com/ansible/2.7/modules/homebrew_tap_module.html
     - name: Homebrew tap

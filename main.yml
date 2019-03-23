@@ -12,16 +12,17 @@
       - caskroom/cask
     brew_cask_apps:
       # /Appliationsに入れるアプリを追加(Alfredの検索対象)
+      - alfred
+      - firefox
+      - franz
       - google-chrome
       - google-japanese-ime
-      - firefox
-      - hyperswitch
-      - alfred
       - gyazo
+      - hyperswitch
       - iterm2
-      - visual-studio-code
       - sequel-pro
       - virtualbox
+      - visual-studio-code
     brew_packages:
       # brew_listのパッケージを追加
       # If you want to localize your list, paste the result of executing next command

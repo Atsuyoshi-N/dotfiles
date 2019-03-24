@@ -1,0 +1,12 @@
+[user]
+  email = ash.sit.you7@ezweb.ne.jp
+  name = Atsuyoshi-N
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+  required = true
+[alias]
+  n  = now --all --stat
+	pr = pull-request
+	see = browse

@@ -138,6 +138,10 @@ zle -N cdup
 
 bindkey "^R" history-incremental-search-backward
 
+# -------------------------------------
+# hub setting
+# -------------------------------------
+function git(){hub "$@"}
 
 # -------------------------------------
 # その他

@@ -11,12 +11,12 @@ brew install git
 printf "installing ansible..."
 brew install ansible
 
+printf "clone dotfiles repository"
+git clone https://github.com/Atsuyoshi-N/dotfiles.git
+
 printf "installing packages with ansible..."
 cd dotfiles
 ansible-playbook main.yaml -i inventory
-
-printf "clone dotfiles repository"
-git clone https://github.com/Atsuyoshi-N/dotfiles.git
 
 printf "enter password: "
 read password

@@ -16,16 +16,16 @@ git clone https://github.com/Atsuyoshi-N/dotfiles.git
 
 printf "installing packages with ansible..."
 cd dotfiles
-ansible-playbook main.yml -i inventory
-
 printf "enter password: "
 read password
+echo "$password" | sudo -S ansible-playbook main.yml -i inventory
+
 echo "$password" | sudo -S echo "/usr/local/bin/zsh" >> /etc/shells
 
 printf "change default shell to zsh? (Y/n): "
 read changeshell
 if [ $changeshell = "Y" ] ; then
-  chsh -s /usr/local/bin/zsh
+  echo "$password" | sudo -S chsh -s /usr/local/bin/zsh
   printf "default shell changed to zsh.\n"
 else
   printf "default shell remains bash.\n"

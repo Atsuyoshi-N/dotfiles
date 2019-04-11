@@ -162,5 +162,6 @@
       homebrew:
         name: "{{ brew_packages }}"
         state: "present"
+      with_items: "{{ brew_packages }}"
 
 

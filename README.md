@@ -1,4 +1,9 @@
 # dotfiles
+# Getting Started
+```
+$ cd ~/
+$ curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/install_package.sh | sh
+```
 
 # Setup
 ### neovim
@@ -7,7 +12,7 @@ Plugins that require additional configuration and their setting method are shown
 ### Deoplete
 <details>
  <summary> Deoplete.nvim Settings</summary>
- 
+
  1. Check Python3 support
  If `:echo has("python3")` returns 1, follow next steps
 

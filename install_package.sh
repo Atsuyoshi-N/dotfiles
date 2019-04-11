@@ -16,7 +16,7 @@ git clone https://github.com/Atsuyoshi-N/dotfiles.git
 
 printf "installing packages with ansible..."
 cd dotfiles
-ansible-playbook main.yaml -i inventory
+ansible-playbook main.yml -i inventory
 
 printf "enter password: "
 read password

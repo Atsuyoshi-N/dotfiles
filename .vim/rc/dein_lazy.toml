@@ -26,8 +26,12 @@ depends = ['deoplete.nvim']
 on_ft = 'ruby'
 
 [[plugins]]
-repo = 'taichouchou2/vim-rails'
+repo = 'uplus/deoplete-solargraph'
 on_ft = 'ruby'
+
+# [[plugins]]
+# repo = 'taichouchou2/vim-rails'
+# on_ft = 'ruby'
 
 [[plugins]]
 repo = 'romanvbabenko/rails.vim'
@@ -116,6 +120,15 @@ on_ft = ['javascript', 'javascript.jsx']
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = ['html', 'javascript', 'vue']
+
+# tsx
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['ts', 'tsx','typescript.tsx']
+
+[[plugins]]
+repo = 'peitalin/vim-jsx-typescript'
+on_ft = ['ts', 'tsx','typescript.tsx']
 
 [[plugins]] # json
 repo = 'elzr/vim-json'

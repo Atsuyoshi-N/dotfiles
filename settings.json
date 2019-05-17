@@ -1,12 +1,13 @@
 {
-    "_comment": "this is VSCode settings.json, place $HOME/Library/Application Support/Code/User/settings.json",
     "workbench.colorTheme": "Vim Hybrid Theme",
     "workbench.startupEditor": "newUntitledFile",
     "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
     "vim.insertModeKeyBindings": [
         {
-        "before":["j", "k"],
+        "before":["j","k"],
         "after":["<Esc>"]
         }
-    ]
+    ],
+    "vim.leader": "<space>"
 }

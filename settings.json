@@ -1,0 +1,11 @@
+{
+    "_comment": "this is VSCode settings.json, place $HOME/Library/Application Support/Code/User/settings.json",
+    "workbench.startupEditor": "newUntitledFile",
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindings": [
+        {
+        "before":["j+k"],
+        "after":["<Esc>"]
+        }
+    ]
+}

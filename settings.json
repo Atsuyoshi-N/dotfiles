@@ -11,5 +11,13 @@
         }
     ],
     "vim.leader": "<space>",
-    "editor.formatOnSave": true
+    "[ruby]": {
+      "editor.formatOnSave": true
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": true
+    }
 }

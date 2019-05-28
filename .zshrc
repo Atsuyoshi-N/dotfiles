@@ -117,11 +117,7 @@ alias gffc='git flow feature checkout'
 alias vim='nvim'
 
 # g++
-alias g++='g++ -std=c++17'
-
-# Python
-alias python='python3' # Python2系が呼び出されないのでPython2系のプロジェクトが来たら注意
-alias pip='pip3'
+# alias g++='g++ -std=c++17'
 
 # -------------------------------------
 # キーバインド

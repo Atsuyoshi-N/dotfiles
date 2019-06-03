@@ -31,7 +31,7 @@ export NODEBREW_HOME
 export NODEBREW_ROOT=/usr/local/var/nodebrew
 
 export PATH=$PATH:$NODEBREW_HOME/bin
-#export PATH=/usr/local/bin:${PATH}
+export PATH=/usr/local/bin:$PATH
 
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.nodebrew/current/bin:$PATH"

@@ -1,0 +1,6 @@
+# https://help.github.com/en/articles/ignoring-files
+# $ git config --global core.excludesfile ~/.gitignore_global
+
+# Ignore redis binary dump (dump.rdb) files
+*.rdb
+

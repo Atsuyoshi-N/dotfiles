@@ -10,3 +10,5 @@
   n  = now --all --stat
 	pr = pull-request
 	see = browse
+[core]
+	excludesfile = /Users/atsuyoshi/.gitignore_global

@@ -1,6 +1,11 @@
 #!/bin/sh
 # setup Mac
 
+if [ "$(uname)" != 'Darwin' ] ; then
+  echo 'Not macOS! exiting...'
+  exit 1
+fi
+
 cd ~
 echo 'Setup MacOS'
 sudo nvram SystemAudioVolume=" " # ブート時のサウンドを無効化する

@@ -49,6 +49,9 @@ echo 'Finish to make symbolic links'
 source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
+echo 'Installing programming languages...'
+brew bundle --file='brewfiles/programming_Brewfile'
+
 echo 'Reboot your terminal, to make changes affect.'
 echo 'Reboot your mac, to make changes affect.'
 

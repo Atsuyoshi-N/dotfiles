@@ -8,6 +8,12 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 defaults write com.apple.desktopservices DSDontWriteNetworkStores True # .DS_Storeを作成しない
 defaults write com.apple.finder AppleShowAllFiles TRUE # 隠しファイルを表示するようにする
 
+# Dock
+defaults write com.apple.dock tilesize -int 32 # Dockのサイズ, 16(minimum)~128で指定
+defaults write com.apple.dock orientation -string "left" # Dockを左に表示する
+defaults write com.apple.dock autohide -bool true # Dockを自動的に隠す
+killall Dock # Dockのsessionを切る
+
 # key repeat
 # 確認コマンド:
 # $ defaults read -g InitialKeyRepeat

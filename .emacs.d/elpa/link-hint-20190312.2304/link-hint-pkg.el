@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "link-hint" "20190312.2304" "Use avy to open, copy, etc. visible links." '((avy "0.4.0") (emacs "24.1") (cl-lib "0.5")) :commit "d74a483652486260c052941fedeadddb1ea71f88" :keywords '("convenience" "url" "avy" "link" "links" "hyperlink") :authors '(("Fox Kiester" . "noct@openmailbox.org")) :maintainer '("Fox Kiester" . "noct@openmailbox.org") :url "https://github.com/noctuid/link-hint.el")

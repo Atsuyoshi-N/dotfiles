@@ -1,6 +1,5 @@
 #!/bin/sh
 # setup Mac
-# Before running this script, you MUST setup Github SSH
 
 cd ~
 echo 'Setup MacOS'
@@ -28,12 +27,12 @@ brew install git
 echo 'Installing openssl...'
 brew install openssl
 
-echo 'Connecting Github with SSH'
-ssh -T git@github.com
-git-add ~/.ssh/id_rsa
+# echo 'Connecting Github with SSH'
+# ssh -T git@github.com
+# git-add ~/.ssh/id_rsa
 
 echo 'Cloning my dotfiles...'
-git clone git@github.com:Atsuyoshi-N/dotfiles.git
+git clone https://github.com/Atsuyoshi-N/dotfiles.git
 
 echo 'Install brew packages...'
 ln -s dotfiles/brewfiles .

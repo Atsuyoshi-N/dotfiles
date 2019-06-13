@@ -2,7 +2,7 @@
 # Getting Started
 ```
 $ cd ~/
-$ curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/install_package.sh | sh
+$ curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/initialize_mac.sh | sh
 ```
 
 # Setup

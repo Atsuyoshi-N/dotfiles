@@ -14,4 +14,3 @@ brew 'tmux'
 brew 'vim', args: ['--with-lua', '--with-python3']
 brew 'vimpager'
 brew 'zsh'
-

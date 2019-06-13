@@ -5,10 +5,15 @@ cd ~
 echo 'Setup MacOS'
 sudo nvram SystemAudioVolume=" " # ブート時のサウンドを無効化する
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName # 時計アイコンクリック時に OS やホスト名 IP を表示する
+defaults write com.apple.menuextra.battery ShowPercent -string "YES" # バッテリー表示を % 表記にする
+# 日付と時刻のフォーマットを設定する (24時間表示、秒表示あり、日付・曜日を表示する)
+defaults write com.apple.menuextra.clock DateFormat -string "M\u6708d\u65e5(EEE)  H:mm:ss"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores True # .DS_Storeを作成しない
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true # USB ストレージに .DS_Store ファイルを作成しない
 defaults write com.apple.finder AppleShowAllFiles TRUE # 隠しファイルを表示するようにする
 
 # Dock
+defaults write com.apple.dock autohide-delay -float 0 # Dock が表示されるまでの待ち時間を無効にする
 defaults write com.apple.dock tilesize -int 32 # Dockのサイズ, 16(minimum)~128で指定
 defaults write com.apple.dock orientation -string "left" # Dockを左に表示する
 defaults write com.apple.dock autohide -bool true # Dockを自動的に隠す

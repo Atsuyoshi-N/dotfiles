@@ -13,3 +13,5 @@ brew 'rbenv'
 brew 'ruby'
 brew 'yarn'
 
+tap 'homebrew/science'
+brew 'R'

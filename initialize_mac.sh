@@ -52,6 +52,9 @@ tmux source-file ~/.tmux.conf
 echo 'Installing programming languages...'
 brew bundle --file='brewfiles/programming_Brewfile'
 
+echo 'Installing other brew packages...'
+brew bundle --file='brewfiles/others_Brewfile'
+
 echo 'Reboot your terminal, to make changes affect.'
 echo 'Reboot your mac, to make changes affect.'
 

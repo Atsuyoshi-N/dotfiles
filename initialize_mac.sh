@@ -1,5 +1,6 @@
 #!/bin/sh
 # setup Mac
+# Before running this script, you MUST setup Github SSH
 
 cd ~
 echo 'Setup MacOS'
@@ -21,23 +22,33 @@ echo 'Installing HomeBrew...'
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 
-echo 'Installing git..'
+echo 'Installing git...'
 brew install git
 
-echo 'Installing openssl..'
+echo 'Installing openssl...'
 brew install openssl
 
 echo 'Connecting Github with SSH'
 ssh -T git@github.com
 git-add ~/.ssh/id_rsa
 
-echo 'Cloning my dotfiles'
+echo 'Cloning my dotfiles...'
 git clone git@github.com:Atsuyoshi-N/dotfiles.git
+
+echo 'Install brew packages...'
+ln -s dotfiles/brewfiles .
+brew bundle --file='brewfiles/command_line_Brewfile'
+
+echo 'Use zsh for default shell'
+chsh -s /usr/local/bin/zsh
 
 # Symlinks
 echo 'Start making symbolic links'
 sh dotfiles/making_symbolic_links.sh
 echo 'Finish to make symbolic links'
+source ~/.zshrc
+tmux source-file ~/.tmux.conf
 
+echo 'Reboot your terminal, to make changes affect.'
 echo 'Reboot your mac, to make changes affect.'
 

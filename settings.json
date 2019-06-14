@@ -1,5 +1,5 @@
+// "this is VSCode settings.json, place $HOME/Library/Application Support/Code/User/settings.json"
 {
-    //"this is VSCode settings.json, place $HOME/Library/Application Support/Code/User/settings.json",
     "editor.tabsize": 2,
     "workbench.colorTheme": "Vim Hybrid Theme",
     "workbench.startupEditor": "newUntitledFile",

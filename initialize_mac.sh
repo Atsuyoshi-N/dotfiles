@@ -50,6 +50,11 @@ brew install openssl
 echo 'Cloning my dotfiles...'
 git clone https://github.com/Atsuyoshi-N/dotfiles.git
 
+echo 'Prepare for vim backup directory only when .vim/backup does not exist'
+if [ ! -d ${HOME}/.vim/backup ]; then
+  mkdir -p ${HOME}/.vim/backup
+fi
+
 echo 'Install brew packages...'
 ln -s dotfiles/brewfiles .
 brew bundle --file='brewfiles/command_line_Brewfile'

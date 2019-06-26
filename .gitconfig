@@ -12,3 +12,5 @@
 	see = browse
 [core]
 	excludesfile = /Users/atsuyoshi/.gitignore_global
+[ghq]
+	root = /Users/atsuyoshi/repositories

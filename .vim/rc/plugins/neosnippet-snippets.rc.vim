@@ -6,5 +6,5 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/,~/.vim/snippets/'
+let g:neosnippet#snippets_directory='~/dotfiles/.vim/bundle/neosnippet-snippets/snippets/,~/.vim/snippets/'
 

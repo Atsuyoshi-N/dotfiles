@@ -44,6 +44,11 @@ snippet unionfind
 snippet std
   using namespace std;
 
+snippet main
+  int main() {
+    return 0;
+  }
+
 snippet mod
   const int mod = 1e9+7;
 
@@ -60,3 +65,17 @@ snippet inf
 
 snippet linf
   const long long linf = (1LL<<60);
+
+snippet gcd
+  // include <cmath>
+  // include <algorithm>
+  int gcd(int m, int n) {
+    if(m < n) swap(m, n);
+    if(n == 0) return abs(m);
+    else return gcd(n, m % n);
+  }
+
+snippet lcm
+  int lcm(int m, int n) {
+    return abs(m*n) / gcd(m, n);
+  }

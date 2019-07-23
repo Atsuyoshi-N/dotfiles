@@ -174,3 +174,13 @@ snippet comb
       if (n < 0 || k < 0) return 0;
       return fac[n] * (finv[k] * finv[n - k] % mod) % mod;
   }
+
+snippet isPrime
+  bool isPrime(int num) {
+    if(num == 2) return true;
+    for(int i = 3; i * i <= num; ++i) {
+      if(num % i == 0) return false;
+    }
+    return true;
+  }
+

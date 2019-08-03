@@ -194,3 +194,22 @@ snippet lis
     cout << lower_bound(dp.begin(), dp.end(), inf) - dp.begin() << endl;
   }
 
+snippet bit
+  class BIT {
+    public:
+      int sum(int i) {
+        int s = 0;
+        while(i > 0) {
+          s += bit[i];
+          i -= i & -i;
+        }
+        return s;
+      }
+
+      void add(int i, int x) {
+        while(i <= N) {
+          bit[i] += x;
+          i += i & -i;
+        }
+      }
+  };

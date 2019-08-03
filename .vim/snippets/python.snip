@@ -1,5 +1,14 @@
 snippet nCr
   import math
   def nCr(n, r):
-    return math.factorial(n) // (math.factorial(n-r) * math.factorial(r))
+      return math.factorial(n) // (math.factorial(n-r) * math.factorial(r))
+
+snippet lis
+  def lis(N, a):
+      import bisect
+      inf = 1 << 30
+      dp = [inf] * N
+      for i in range(N):
+          dp[bisect.bisect_left(dp, a[i])] = a[i]
+      print(bisect.bisect_left(dp, inf))
 

@@ -39,6 +39,10 @@ snippet unionfind
 
         return true;
       }
+
+      bool same(int A, int B) {
+        return root(A) == root(B);
+      }
   };
 
 snippet std
@@ -211,5 +215,79 @@ snippet bit
           bit[i] += x;
           i += i & -i;
         }
+      }
+  };
+
+snippet extgcd
+  // int a, b, x, y; cin >> a >> b;
+  // extgcd(a, b, x, y);
+  // cout << x << " " << y << endl; // 1次不定方程式の解
+  int extgcd(int a, int b, int &x, int &y) {
+    if(b == 0) {
+      x = 1, y = 0;
+      return a;
+    }
+    int d = extgcd(b, a%b, y, x);
+    y -= a/b * x;
+    return d;
+  }
+
+snippet wunionfind
+  class UnionFind {
+    public:
+      // 親の番号を格納する。親だった場合は-(その集合のサイズ)
+      vector<int> Parent;
+      vector<int> diff;
+
+      // 作る時はParentの値を全て-1にする
+      // こうすると全てバラバラが表現できる。
+      UnionFind(int N) {
+        Parent = vector<int>(N, -1);
+        diff = vector<int>(N, 0);
+      }
+
+      // Aがどのグループに属しているか調べる
+      int root(int A) {
+        if(Parent[A] < 0) return A;
+        else {
+          int r = root(Parent[A]);
+          diff[A] += diff[Parent[A]];
+          return Parent[A] = r;
+        }
+      }
+
+      int size(int A) {
+        return -Parent[root(A)]; // 親を取ってきたい
+      }
+
+      int weight(int x) {
+        root(x);
+        return diff[x];
+      }
+
+      bool connect(int A, int B, int w) {
+        w += weight(A); w -= weight(B);
+        // AとBを直接繋ぐのではなく、root(A)をroot(B)をくっつける
+        A = root(A);
+        B = root(B);
+        if(A == B) {
+          //すでにくっついているからくっつけない
+          return false;
+        }
+
+        // 大きい方に小さい方をくっつけたい
+        // 代償が逆だったらひっくり返す
+        if(size(A) < size(B)) swap(A, B), w = -w;
+        // Aのsizeを更新
+        Parent[A] += Parent[B];
+        // Bの親をAに変更する
+        Parent[B] = A;
+        diff[B] = w;
+
+        return true;
+      }
+
+      int dif(int x, int y) {
+        return weight(y) - weight(x);
       }
   };

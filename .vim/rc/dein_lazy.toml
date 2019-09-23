@@ -2,6 +2,7 @@
 [[plugins]] # go support
 repo = 'fatih/vim-go'
 on_ft = 'go'
+hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-go.rc.vim'
 
 [[plugins]] # go complete
 repo = 'zchee/deoplete-go'

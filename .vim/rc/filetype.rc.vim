@@ -19,14 +19,21 @@ au BufNewFile,BufRead *.tex    setf tex
 au BufNewFile,BufRead *.vue    syntax sync fromstart
 
 " ファイル新規作成時のみテンプレートを読み込むようにする
-au BufNewFile *.cpp 0read ${HOME}/dotfiles/.vim/template/cpp.txt
+" au BufNewFile *.cpp 0read ${HOME}/dotfiles/.vim/template/cpp.txt
 
-autocmd BufNewFile,BufRead *.es6    setfiletype javascript
-autocmd BufNewFile,BufRead *.vue    setfiletype html
-autocmd BufNewFile,BufRead *.ts     setlocal filetype=typescript
-autocmd BufNewFile,BufRead *.tsx    setfiletype typescript.tsx
+au BufNewFile,BufRead *.es6    setfiletype javascript
+au BufNewFile,BufRead *.vue    setfiletype html
+au BufNewFile,BufRead *.ts     setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx    setfiletype typescript.tsx
+
 " Completion Resultにdocstringを表示しない
-autocmd FileType python setlocal completeopt-=preview
+au FileType python setlocal completeopt-=preview
+
+" vim-go
+" https://github.com/hnakamur/vim-go-tutorial-ja
+" :GoBuildと:GoRunを簡略化
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>r <Plug>(go-run)
 
 filetype plugin on
 

@@ -3,12 +3,15 @@
   name = Atsuyoshi-N
 [filter "lfs"]
   clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
   required = true
 [alias]
   n  = now --all --stat
-	pr = pull-request
-	see = browse
+  pr = pull-request
+  see = browse
 [core]
-	excludesfile = /Users/atsuyoshi/.gitignore_global
+  excludesfile = /Users/atsuyoshi/.gitignore_global
+  ignorecase = false
+[ghq]
+  root = /Users/atsuyoshi/repositories

@@ -1,0 +1,293 @@
+snippet unionfind
+  class UnionFind {
+    public:
+      // 親の番号を格納する。親だった場合は-(その集合のサイズ)
+      vector<int> Parent;
+
+      // 作る時はParentの値を全て-1にする
+      // こうすると全てバラバラが表現できる。
+      UnionFind(int N) {
+        Parent = vector<int>(N, -1);
+      }
+
+      // Aがどのグループに属しているか調べる
+      int root(int A) {
+        if(Parent[A] < 0) return A;
+        return Parent[A] = root(Parent[A]);
+      }
+
+      int size(int A) {
+        return -Parent[root(A)]; // 親を取ってきたい
+      }
+
+      bool connect(int A, int B) {
+        // AとBを直接繋ぐのではなく、root(A)をroot(B)をくっつける
+        A = root(A);
+        B = root(B);
+        if(A == B) {
+          //すでにくっついているからくっつけない
+          return false;
+        }
+
+        // 大きい方に小さい方をくっつけたい
+        // 代償が逆だったらひっくり返す
+        if(size(A) < size(B)) swap(A, B);
+        // Aのsizeを更新
+        Parent[A] += Parent[B];
+        // Bの親をAに変更する
+        Parent[B] = A;
+
+        return true;
+      }
+
+      bool same(int A, int B) {
+        return root(A) == root(B);
+      }
+  };
+
+snippet std
+  using namespace std;
+
+snippet main
+  int main() {
+    return 0;
+  }
+
+snippet mod
+  const int mod = 1e9+7;
+
+snippet defint
+  #define int long long
+  using namespace std;
+
+  signed main() {
+    return 0;
+  }
+
+snippet inf
+  const int inf = 1<<30;
+
+snippet linf
+  const long long linf = (1LL<<60);
+
+snippet gcd
+  // include <cmath>
+  // include <algorithm>
+  int gcd(int m, int n) {
+    if(m < n) swap(m, n);
+    if(n == 0) return abs(m);
+    else return gcd(n, m % n);
+  }
+
+snippet lcm
+  int lcm(int m, int n) {
+    return abs(m*n) / gcd(m, n);
+  }
+
+snippet mint
+  struct mint {
+    ll x;
+    mint(ll x=0):x(x%mod){}
+    mint& operator+=(const mint a) {
+      if ((x += a.x) >= mod) x -= mod;
+      return *this;
+    }
+    mint& operator-=(const mint a) {
+      if ((x += mod-a.x) >= mod) x -= mod;
+      return *this;
+    }
+    mint& operator*=(const mint a) {
+      (x *= a.x) %= mod;
+      return *this;
+    }
+    mint operator+(const mint a) const {
+      mint res(*this);
+      return res+=a;
+    }
+    mint operator-(const mint a) const {
+      mint res(*this);
+      return res-=a;
+    }
+    mint operator*(const mint a) const {
+      mint res(*this);
+      return res*=a;
+    }
+    mint pow(ll t) const {
+      if (!t) return 1;
+      mint a = pow(t>>1);
+      a *= a;
+      if (t&1) a *= *this;
+      return a;
+    }
+
+    // for prime mod
+    mint inv() const {
+      return pow(mod-2);
+    }
+    mint& operator/=(const mint a) {
+      return (*this) *= a.inv();
+    }
+    mint operator/(const mint a) const {
+      mint res(*this);
+      return res/=a;
+    }
+  };
+
+snippet mint_combination
+alias mintcomb
+  struct combination {
+    vector<mint> fact, ifact;
+    combination(int n):fact(n+1),ifact(n+1) {
+      fact[0] = 1;
+      for (int i = 1; i <= n; ++i) fact[i] = fact[i-1]*i;
+      ifact[n] = fact[n].inv();
+      for (int i = n; i >= 1; --i) ifact[i-1] = ifact[i]*i;
+    }
+    mint operator()(int n, int k) {
+      if (k < 0 || k > n) return 0;
+      return fact[n]*ifact[k]*ifact[n-k];
+    }
+  } comb(100005);
+
+snippet dx
+  const int dx[4] = {-1, 0, 1, 0};
+
+snippet dy
+  const int dy[4] = {0, 1, 0, -1};
+
+snippet comb
+  const int MAX=510000
+  long long fac[MAX], finv[MAX], inv[MAX];
+
+  // テーブルを作る前処理
+  void COMinit() {
+      fac[0] = fac[1] = 1;
+      finv[0] = finv[1] = 1;
+      inv[1] = 1;
+      for (int i = 2; i < MAX; i++){
+          fac[i] = fac[i - 1] * i % mod;
+          inv[i] = mod - inv[mod%i] * (mod / i) % mod;
+          finv[i] = finv[i - 1] * inv[i] % mod;
+      }
+  }
+
+  // 二項係数計算
+  // mainの中でCOMinit()を呼んで初期化してあげる
+  long long COM(int n, int k){
+      if (n < k) return 0;
+      if (n < 0 || k < 0) return 0;
+      return fac[n] * (finv[k] * finv[n - k] % mod) % mod;
+  }
+
+snippet isPrime
+  bool isPrime(int num) {
+    if(num == 2) return true;
+    for(int i = 3; i * i <= num; ++i) {
+      if(num % i == 0) return false;
+    }
+    return true;
+  }
+
+snippet lis
+  void lis(int N, vector<int>& a) {
+    vector<int> dp(N);
+    fill(dp.begin(), dp.end(), inf);
+    for(int i = 0; i < N; ++i) {
+      *lower_bound(dp.begin(), dp.end(), a[i]) = a[i];
+    }
+    cout << lower_bound(dp.begin(), dp.end(), inf) - dp.begin() << endl;
+  }
+
+snippet bit
+  class BIT {
+    public:
+      int sum(int i) {
+        int s = 0;
+        while(i > 0) {
+          s += bit[i];
+          i -= i & -i;
+        }
+        return s;
+      }
+
+      void add(int i, int x) {
+        while(i <= N) {
+          bit[i] += x;
+          i += i & -i;
+        }
+      }
+  };
+
+snippet extgcd
+  // int a, b, x, y; cin >> a >> b;
+  // extgcd(a, b, x, y);
+  // cout << x << " " << y << endl; // 1次不定方程式の解
+  int extgcd(int a, int b, int &x, int &y) {
+    if(b == 0) {
+      x = 1, y = 0;
+      return a;
+    }
+    int d = extgcd(b, a%b, y, x);
+    y -= a/b * x;
+    return d;
+  }
+
+snippet wunionfind
+  class UnionFind {
+    public:
+      // 親の番号を格納する。親だった場合は-(その集合のサイズ)
+      vector<int> Parent;
+      vector<int> diff;
+
+      // 作る時はParentの値を全て-1にする
+      // こうすると全てバラバラが表現できる。
+      UnionFind(int N) {
+        Parent = vector<int>(N, -1);
+        diff = vector<int>(N, 0);
+      }
+
+      // Aがどのグループに属しているか調べる
+      int root(int A) {
+        if(Parent[A] < 0) return A;
+        else {
+          int r = root(Parent[A]);
+          diff[A] += diff[Parent[A]];
+          return Parent[A] = r;
+        }
+      }
+
+      int size(int A) {
+        return -Parent[root(A)]; // 親を取ってきたい
+      }
+
+      int weight(int x) {
+        root(x);
+        return diff[x];
+      }
+
+      bool connect(int A, int B, int w) {
+        w += weight(A); w -= weight(B);
+        // AとBを直接繋ぐのではなく、root(A)をroot(B)をくっつける
+        A = root(A);
+        B = root(B);
+        if(A == B) {
+          //すでにくっついているからくっつけない
+          return false;
+        }
+
+        // 大きい方に小さい方をくっつけたい
+        // 代償が逆だったらひっくり返す
+        if(size(A) < size(B)) swap(A, B), w = -w;
+        // Aのsizeを更新
+        Parent[A] += Parent[B];
+        // Bの親をAに変更する
+        Parent[B] = A;
+        diff[B] = w;
+
+        return true;
+      }
+
+      int dif(int x, int y) {
+        return weight(y) - weight(x);
+      }
+  };

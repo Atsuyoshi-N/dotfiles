@@ -36,6 +36,16 @@ repo = 'thinca/vim-quickrun'
 hook_add = 'source ~/dotfiles/.vim/rc/plugins/vim-quickrun.rc.vim'
 
 [[plugins]]
+repo = 'tbodt/deoplete-tabnine'
+build = './install.sh'
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+branch = 'next'
+build = 'install.sh'
+hook_add = "let g:LanguageClient_server_Commands = {'ruby': ['~/.rbenv/shims/solargraph', 'stdio']}"
+
+[[plugins]]
 repo = 'osyo-manga/shabadou.vim'
 
 # === Check syntax ===

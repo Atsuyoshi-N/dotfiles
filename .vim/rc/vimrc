@@ -33,6 +33,7 @@ augroup END
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 call s:source_rc('dein.rc.vim')
+call s:source_rc('vimplug.rc.vim')
 call s:source_rc('filetype.rc.vim')
 call s:source_rc('mappings.rc.vim')
 call s:source_rc('options.rc.vim')

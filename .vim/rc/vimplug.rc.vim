@@ -28,16 +28,17 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-" Plug 'scrooloose/nerdtree'
-" call s:source_setting_file('nerdtree.rc.vim')
+Plug 'scrooloose/nerdtree'
+call s:source_setting_file('nerdtree.rc.vim')
 
 if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-  call s:source_setting_file('defx.rc.vim')
+  " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  " call s:source_setting_file('defx.rc.vim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   call s:source_setting_file('deoplete.rc.vim')
 else
-  Plug 'Shougo/defx.nvim'
+  " Plug 'Shougo/defx.nvim'
+  " call s:source_setting_file('defx.rc.vim')
   Plug 'Shougo/deoplete.nvim'
   call s:source_setting_file('deoplete.rc.vim')
   Plug 'roxma/nvim-yarp'
@@ -57,7 +58,7 @@ call s:source_setting_file('vim-syntastic.rc.vim')
 Plug 'w0ng/vim-hybrid'
 call s:source_setting_file('vim-hybrid.rc.vim')
 
-" 
+"
 " Completion:
 "
 
@@ -74,7 +75,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 call s:source_setting_file('languageclient-neovim.rc.vim')
 
 " (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf'
 
 Plug 'itchyny/lightline.vim'
 set laststatus=2
@@ -89,5 +90,35 @@ call s:source_setting_file('vim-autoclose.rc.vim')
 " Toggle buffer
 Plug 'Shougo/denite.nvim'
 call s:source_setting_file('denite.rc.vim')
+
+" Triming unnecessary whitespaces at the end of the line
+Plug 'bronson/vim-trailing-whitespace'
+call s:source_setting_file('vim-trailing-whitespace.rc.vim')
+
+" auto set :paste mode
+Plug 'ConradIrwin/vim-bracketed-paste'
+
+" surround a text object with a specified block
+Plug 'kana/vim-operator-user'
+Plug 'rhysd/vim-operator-surround'
+call s:source_setting_file('vim-operator-surround.rc.vim')
+
+" jump if -> else -> end or ( -> ) etc...
+Plug 'andymass/vim-matchup'
+let g:loaded_matchit = 1
+
+" Auto completion def -> end
+Plug 'tpope/vim-endwise'
+
+" かっこの対応をよしなに
+Plug 'cohama/lexima.vim'
+
+" Easy comment out
+Plug 'scrooloose/nerdcommenter'
+call s:source_setting_file('nerdcommenter.rc.vim')
+
+" Easy align
+Plug 'junegunn/vim-easy-align'
+call s:source_setting_file('vim-easy-align.rc.vim')
 
 call plug#end()

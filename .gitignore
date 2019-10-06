@@ -1,5 +1,6 @@
 .vim/backup/**
 .vim/bundle/**
+.vim/plugged/**
 installer.sh
 tags
 github-recovery-codes.txt

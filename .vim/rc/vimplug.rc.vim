@@ -121,4 +121,10 @@ call s:source_setting_file('nerdcommenter.rc.vim')
 Plug 'junegunn/vim-easy-align'
 call s:source_setting_file('vim-easy-align.rc.vim')
 
+" === Language Support ===
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" ========== Golang ==========
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+
 call plug#end()

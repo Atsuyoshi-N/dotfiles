@@ -55,6 +55,15 @@ if [ ! -d ${HOME}/.vim/backup ]; then
   mkdir -p ${HOME}/.vim/backup
 fi
 
+echo 'Installing VimPlug'
+if [ ! -d ${HOME}/.vim/plugged ]; then
+  mkdir -p ${HOME}/.vim/plugged
+fi
+# Vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# Neovim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 echo 'Install brew packages...'
 ln -s dotfiles/brewfiles .
 brew bundle --file='brewfiles/command_line_Brewfile'

@@ -127,4 +127,39 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ========== Golang ==========
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
+" ========== Ruby ===========
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+
+" ========== Python ==========
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+" ========== HTML, CSS, SCSS ==========
+Plug 'othree/html5.vim', { 'for': 'html' }
+call s:source_setting_file('html5.rc.vim')
+
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
+
+Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
+
+Plug 'stephpy/vim-yaml', { 'for': ['yml', 'yaml'] }
+
+" ========== Javascript ==========
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx', 'jsx', 'vue', 'ts', 'tsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx', 'jsx', 'ts', 'tsx'] }
+let g:jsx_ext_required = 0
+Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx', 'jsx', 'ts', 'tsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['ts', 'tsx'] }
+Plug 'posva/vim-vue', { 'for': ['html', 'javascript', 'vue'] }
+Plug 'elzr/vim-json', { 'for': 'json' }
+let g:vim_json_syntax_conceal = 0
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+" ========== markdown ==========
+Plug 'kannokanno/previm'
+let g:previm_open_cmd = "open -a 'Google Chrome'"
+" :PrevimOpen でChromeが開き、markdownのプレビューが表示される
+
 call plug#end()

@@ -123,6 +123,7 @@ call s:source_setting_file('vim-easy-align.rc.vim')
 
 " === Language Support ===
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call s:source_setting_file('coc.rc.vim')
 
 " ========== Golang ==========
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
@@ -156,6 +157,8 @@ let g:vim_json_syntax_conceal = 0
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+autocmd BufWritePre *.js,*jsx,*.ts,*tsx,*.vue,*.css,*.scss,*.json,*.md PrettierAsync
+
 
 " ========== markdown ==========
 Plug 'kannokanno/previm'

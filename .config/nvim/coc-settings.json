@@ -15,6 +15,7 @@
         "lintTool": "golint"
       }
     }
-  }
+  },
+  "suggest.autoTrigger": "none"
 }
 

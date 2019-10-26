@@ -77,8 +77,12 @@ call s:source_setting_file('languageclient-neovim.rc.vim')
 " (Optional) Multi-entry selection UI.
 " Plug 'junegunn/fzf'
 
+" In order to show current git branch on status line
+Plug 'tpope/vim-fugitive'
+
+" Status line plugin
 Plug 'itchyny/lightline.vim'
-set laststatus=2
+call s:source_setting_file('lightline.rc.vim')
 
 " Easy to mark up
 Plug 'mattn/emmet-vim'

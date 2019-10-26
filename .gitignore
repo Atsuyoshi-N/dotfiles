@@ -4,3 +4,4 @@
 installer.sh
 tags
 github-recovery-codes.txt
+.emacs.d/.cache/**

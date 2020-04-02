@@ -88,6 +88,7 @@ snippet mint
   struct mint {
     ll x;
     mint(ll x=0):x(x%mod){}
+    mint operator-() const { return mint(-x);}
     mint& operator+=(const mint a) {
       if ((x += a.x) >= mod) x -= mod;
       return *this;
@@ -156,7 +157,7 @@ snippet dy
   const int dy[4] = {0, 1, 0, -1};
 
 snippet comb
-  const int MAX=510000
+  const int MAX=510000;
   long long fac[MAX], finv[MAX], inv[MAX];
 
   // テーブルを作る前処理
@@ -291,3 +292,16 @@ snippet wunionfind
         return weight(y) - weight(x);
       }
   };
+
+snippet rep
+  #define rep(i, n) for(int i = 0; i < (n); i++)
+
+snippet for_points_dist
+  abs(A-B) + abs(start-A) + abs(goal - B)
+
+snippet chmin
+  template<typename T1,typename T2> inline void chmin(T1 &a,T2 b){if(a>b) a=b;}
+
+snippet chmax
+  template<typename T1,typename T2> inline void chmax(T1 &a,T2 b){if(a<b) a=b;}
+

@@ -1,2 +1,6 @@
+set ignore-case = true
 bind main    R !git rebase -i %(commit)
 bind diff    R !git rebase -i %(commit)
+bind generic L      !sh -c "git reflog --pretty=raw | tig --pretty=raw"
+bind generic _      ?git reset --hard HEAD@{"%(prompt Enter HEAD@{} number: )"}
+

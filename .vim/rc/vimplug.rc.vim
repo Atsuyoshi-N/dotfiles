@@ -92,8 +92,8 @@ Plug 'Townk/vim-autoclose'
 call s:source_setting_file('vim-autoclose.rc.vim')
 
 " Toggle buffer
-Plug 'Shougo/denite.nvim'
-call s:source_setting_file('denite.rc.vim')
+" Plug 'Shougo/denite.nvim'
+" call s:source_setting_file('denite.rc.vim')
 
 " Triming unnecessary whitespaces at the end of the line
 Plug 'bronson/vim-trailing-whitespace'
@@ -168,5 +168,12 @@ autocmd BufWritePre *.js,*jsx,*.ts,*tsx,*.vue,*.css,*.scss,*.json,*.md PrettierA
 Plug 'kannokanno/previm'
 let g:previm_open_cmd = "open -a 'Google Chrome'"
 " :PrevimOpen でChromeが開き、markdownのプレビューが表示される
+
+
+" ========== markdown ==========
+Plug 'xuhdev/vim-latex-live-preview'
+" Mac only
+let g:livepreview_previewer = 'open -a Preview'
+" :LLPStartPreview でPDFに出力が始まる
 
 call plug#end()

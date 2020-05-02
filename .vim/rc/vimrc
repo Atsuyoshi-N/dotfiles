@@ -29,11 +29,11 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-" has('python3')
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 call s:source_rc('vimplug.rc.vim')
 call s:source_rc('filetype.rc.vim')
 call s:source_rc('mappings.rc.vim')
 call s:source_rc('options.rc.vim')
 
+" DEBUG LOG
+let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log"
+let $NVIM_PYTHON_LOG_LEVEL="DEBUG"

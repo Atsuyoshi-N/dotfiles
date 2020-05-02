@@ -5,3 +5,4 @@ installer.sh
 tags
 github-recovery-codes.txt
 .emacs.d/.cache/**
+node_modules

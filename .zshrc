@@ -153,7 +153,7 @@ fi
 # fd - cd into the selected directory
 # This one differs from the above, by only showing the sub directories and not
 #  showing the directories within those.
-fd() {
+function fd() {
   DIR=`find * -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` \
     && cd "$DIR"
 }
@@ -184,12 +184,27 @@ function fcd() {
     done
 }
 
+fb() {
+  (git branch | fzf)
+}
+# git checkout
+function ch() {
+  git checkout `fb`
+}
+
 # history
 
 # fh - repeat history
-fh() {
+function fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
+
+zle -N fd
+zle -N fds
+zle -N fcd
+zle -N fb
+zle -N ch
+zle -N fh
 
 # tmux
 
@@ -253,5 +268,11 @@ function title {
 }
 
 eval "$(rbenv init -)"
+
+export JAVA_HOME=`/usr/libexec/java_home -v "11.0.2"`
+export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+export CPATH=`xcrun --show-sdk-path`/usr/include
+
+export PATH=$PATH:/usr/local/bin
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

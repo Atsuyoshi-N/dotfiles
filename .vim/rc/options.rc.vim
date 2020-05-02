@@ -143,6 +143,6 @@ set backupskip=/tmp/*,/private/tmp/*
 set termguicolors
 
 if has('nvim')
-  let g:python_host_prog  = '/usr/local/bin/python2'
-  let g:python3_host_prog = '/usr/local/bin/python3'
+  let g:python_host_prog = expand('/usr/bin/python')
+  let g:python3_host_prog = expand('/usr/bin/python3')
 endif

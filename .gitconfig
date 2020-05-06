@@ -21,10 +21,33 @@
 [core]
   excludesfile = $HOME/.gitignore_global
   ignorecase = false
+  editor = nvim
 [color]
   ui = auto
   diff = auto
   status = auto
   branch = auto
+[push]
+  default = current
+[pull]
+  default = current
+  rebase = true
+  prune = true
+[diff]
+  renames = true
+  tool = nvimdiff
+[merge]
+  log = true
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "nvimdiff"]
+  keepBackup = false
+  cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\""
+  trustExitCode = true
+[rebase]
+  autostash = true
+[fetch]
+  prune = true
 [ghq]
   root = $HOME/repositories

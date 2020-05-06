@@ -3,7 +3,13 @@
     "clangd": {
       "command": "clangd",
       "args": ["--background-index"],
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     },
     "golang": {
@@ -14,6 +20,13 @@
         "diagnosticsEnabled": true,
         "lintTool": "golint"
       }
+    },
+    "efm": {
+      "command": "efm-langserver",
+      "args": [],
+      // custom config path
+      // "args": ["-c", "/path/to/your/config.yaml"],
+      "filetypes": ["vim", "eruby", "markdown"]
     }
   },
   "suggest.autoTrigger": "none"

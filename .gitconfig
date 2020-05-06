@@ -7,9 +7,16 @@
   process = git-lfs filter-process
   required = true
 [alias]
+  s = status
+  sw = switch
+  sc = switch -c
+  b = branch
   n  = now --all --stat
   pr = pull-request
   see = browse
+  current-branch = symbolic-ref --short HEAD
+  diff-master = !git diff master..$(git current-branch)
+  diff-develop = !git diff develop..$(git current-branch)
   delete-merged-branches = "!f () { git branch --merged | egrep -v '\\*|master|develop' | xargs git branch -d; }; f"
 [core]
   excludesfile = /Users/atsuyoshi/.gitignore_global

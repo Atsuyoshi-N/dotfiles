@@ -14,5 +14,10 @@
 [core]
   excludesfile = /Users/atsuyoshi/.gitignore_global
   ignorecase = false
+[color]
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
 [ghq]
   root = /Users/atsuyoshi/repositories

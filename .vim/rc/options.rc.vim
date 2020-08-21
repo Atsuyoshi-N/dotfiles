@@ -37,7 +37,7 @@ set shortmess+=I        "vimの初期画面を表示させない
 " ペーストモードの挿入モードからノーマルモードに戻る時にペーストモードを解除する
 autocmd InsertLeave * set nopaste
 " convert tab to 2 spaces with saving
-autocmd BufWritePre * :%s/\t/  /ge
+" autocmd BufWritePre * :%s/\t/  /ge
 "}}}
 
 

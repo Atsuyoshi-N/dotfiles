@@ -29,10 +29,10 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+call s:source_rc('options.rc.vim')
 call s:source_rc('vimplug.rc.vim')
 call s:source_rc('filetype.rc.vim')
 call s:source_rc('mappings.rc.vim')
-call s:source_rc('options.rc.vim')
 
 " DEBUG LOG
 let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log"

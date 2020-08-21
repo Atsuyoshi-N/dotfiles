@@ -17,6 +17,7 @@ au BufNewFile,BufRead *.php    setf php
 au BufNewFile,BufRead *.sh     setf sh
 au BufNewFile,BufRead *.tex    setf tex
 au BufNewFile,BufRead *.vue    syntax sync fromstart
+au BufNewFile,BufRead Makefile setf make
 
 " ファイル新規作成時のみテンプレートを読み込むようにする
 " au BufNewFile *.cpp 0read ${HOME}/dotfiles/.vim/template/cpp.txt
@@ -28,6 +29,10 @@ au BufNewFile,BufRead *.tsx    setfiletype typescript.tsx
 
 " Completion Resultにdocstringを表示しない
 au FileType python setlocal completeopt-=preview
+
+" In makefiles, don't expand tabs to spaces, since actual tab characters are
+" needed, and have indentation at 8 chars to be sure that all indents are tabs
+au FileType make set noexpandtab
 
 " vim-go
 " https://github.com/hnakamur/vim-go-tutorial-ja

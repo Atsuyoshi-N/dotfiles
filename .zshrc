@@ -188,8 +188,8 @@ fb() {
   (git branch | fzf)
 }
 # git checkout
-function ch() {
-  git checkout `fb`
+function sw() {
+  git switch `fb`
 }
 
 # history
@@ -203,7 +203,7 @@ zle -N fd
 zle -N fds
 zle -N fcd
 zle -N fb
-zle -N ch
+zle -N sw
 zle -N fh
 
 # tmux

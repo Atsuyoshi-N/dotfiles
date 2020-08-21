@@ -36,11 +36,17 @@ if has('nvim')
   " call s:source_setting_file('defx.rc.vim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   call s:source_setting_file('deoplete.rc.vim')
+  " Toggle buffer
+  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+  " call s:source_setting_file('denite.rc.vim')
 else
   " Plug 'Shougo/defx.nvim'
   " call s:source_setting_file('defx.rc.vim')
   Plug 'Shougo/deoplete.nvim'
   call s:source_setting_file('deoplete.rc.vim')
+  " Toggle buffer
+  Plug 'Shougo/denite.nvim'
+  " call s:source_setting_file('denite.rc.vim')
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -91,9 +97,6 @@ call s:source_setting_file('emmet-vim.rc.vim')
 Plug 'Townk/vim-autoclose'
 call s:source_setting_file('vim-autoclose.rc.vim')
 
-" Toggle buffer
-" Plug 'Shougo/denite.nvim'
-" call s:source_setting_file('denite.rc.vim')
 
 " Triming unnecessary whitespaces at the end of the line
 Plug 'bronson/vim-trailing-whitespace'
@@ -124,6 +127,9 @@ call s:source_setting_file('nerdcommenter.rc.vim')
 " Easy align
 Plug 'junegunn/vim-easy-align'
 call s:source_setting_file('vim-easy-align.rc.vim')
+
+" Wrapper of some vim/neovim's :terminal functions.
+Plug 'kassio/neoterm'
 
 " === Language Support ===
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

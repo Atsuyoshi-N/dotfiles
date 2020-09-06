@@ -95,12 +95,42 @@ e_done() {
 # }}}
 
 dotfiles_download() {
+  if [ -d "$DOTFILES_ROOT" ]; then
+    log_fail "$DOTFILES_ROOT already exists"
+    exit 1
+  fi
+
+  e_newline && e_header "Downloading dotfiles..."
+
+  if is_exists "git"; then
+    git clone --recursive "$DOTFILES_GITHUB" "$DOTFILES_ROOT"
+  elif is_exists "curl" || is_exists "wget"; then
+    local tarball="https://github.com/Atsuyoshi-N/dotfiles/archive/$RELEASE_VERSION.tar.gz"
+    if is_exists "curl"; then
+      curl -L "$tarball"
+    else
+      wget -O - "$tarball"
+    fi | tar xvz
+
+    if [ ! -d "dotfiles-$RELEASE_VERSION" ]; then
+      log_fail "dotfiles-$VERSION: not found"
+      exit 1
+    fi
+    command mv -f "dotfiles-$RELEASE_VERSION" "$DOTFILES_ROOT"
+  else
+    log_fail "git, curl or wget required"
+    exit 1
+  fi
+
+  e_newline && e_done "Downloaded"
 }
 
 dotfiles_deploy() {
+  e_newline && e_header "Deploying dotfiles..."
 }
 
 dotfiles_initialize() {
+  e_newline && e_header "Initializing dotfiles..."
 }
 
 dotfiles_install() {
@@ -118,6 +148,7 @@ if [ -z "${DOTFILES_ROOT:-}" ]; then
   DOTFILES_ROOT="$HOME/dotfiles"; export DOTFILES_ROOT
 fi
 DOTFILES_GITHUB="https://github.com/Atsuyoshi-N/dotfiles.git"; export DOTFILES_GITHUB
+RELEASE_VERSION="1.0.0"; export RELEASE_VERSION
 
 main() {
   dotfiles_install

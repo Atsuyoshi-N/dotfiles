@@ -127,6 +127,15 @@ dotfiles_download() {
 
 dotfiles_deploy() {
   e_newline && e_header "Deploying dotfiles..."
+
+  if [ ! -d $DOTFILES_ROOT ]; then
+    log_fail "$DOTFILES_ROOT: not found"
+    exit 1
+  fi
+
+  cd "$DOTFILES_ROOT"
+  make deploy &&
+  e_newline && e_done "Deployed"
 }
 
 dotfiles_initialize() {

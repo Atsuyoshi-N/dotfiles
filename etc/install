@@ -165,7 +165,7 @@ if [ -z "${DOTFILES_ROOT:-}" ]; then
   DOTFILES_ROOT="$HOME/dotfiles"; export DOTFILES_ROOT
 fi
 DOTFILES_GITHUB="https://github.com/Atsuyoshi-N/dotfiles.git"; export DOTFILES_GITHUB
-RELEASE_VERSION="1.0.0"; export RELEASE_VERSION
+RELEASE_VERSION="1.0.1"; export RELEASE_VERSION
 
 main() {
   dotfiles_install

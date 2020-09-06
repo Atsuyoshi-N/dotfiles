@@ -94,9 +94,33 @@ e_done() {
 }
 # }}}
 
+dotfiles_download() {
+}
+
+dotfiles_deploy() {
+}
+
+dotfiles_initialize() {
+}
+
+dotfiles_install() {
+  # 1. Download Atsuyoshi-N/dotfiles repository to $DOTFILES_ROOT.
+  dotfiles_download
+
+  # 2. Deploy dotfiles to my home directory.
+  dotfiles_deploy &&
+
+  # 3. Execute all sh files in etc/init directory
+  dotfiles_initialize
+}
 
 if [ -z "${DOTFILES_ROOT:-}" ]; then
   DOTFILES_ROOT="$HOME/dotfiles"; export DOTFILES_ROOT
 fi
 DOTFILES_GITHUB="https://github.com/Atsuyoshi-N/dotfiles.git"; export DOTFILES_GITHUB
 
+main() {
+  dotfiles_install
+}
+
+main

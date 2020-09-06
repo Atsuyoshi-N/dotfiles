@@ -140,6 +140,14 @@ dotfiles_deploy() {
 
 dotfiles_initialize() {
   e_newline && e_header "Initializing dotfiles..."
+
+  if [ -f Makefile ]; then
+    make init &&
+    e_newline && e_done "Initialized"
+  else
+    log_fail "Makefile: not found"
+    exit 1
+  fi
 }
 
 dotfiles_install() {

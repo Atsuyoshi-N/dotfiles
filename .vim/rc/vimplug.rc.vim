@@ -176,10 +176,10 @@ let g:previm_open_cmd = "open -a 'Google Chrome'"
 " :PrevimOpen でChromeが開き、markdownのプレビューが表示される
 
 
-" ========== markdown ==========
-Plug 'xuhdev/vim-latex-live-preview'
+" ========== tex ==========
+" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " Mac only
-let g:livepreview_previewer = 'open -a Preview'
+" let g:livepreview_previewer = "open -a 'Preview'"
 " :LLPStartPreview でPDFに出力が始まる
 
 call plug#end()

@@ -276,3 +276,8 @@ export CPATH=`xcrun --show-sdk-path`/usr/include
 export PATH=$PATH:/usr/local/bin
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+if [ -d "$HOME/ac-library" ]; then
+  export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/ac-library"
+fi

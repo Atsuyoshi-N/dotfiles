@@ -305,3 +305,14 @@ snippet chmin
 snippet chmax
   template<typename T1,typename T2> inline void chmax(T1 &a,T2 b){if(a<b) a=b;}
 
+snippet modpow
+  long long modpow(long long x, long long n) {
+    long long ret = 1;
+    while(n > 0) {
+      if(n & 1) ret = ret * x % mod;
+      x = x * x % mod;
+      n >>= 1;
+    }
+    return ret;
+  }
+

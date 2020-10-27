@@ -2,11 +2,11 @@ name: macos
 
 on:
   push:
-    branches:
-      - master
+    paths:
+    - etc/init/Brewfile
   pull_request:
-    branches:
-      - master
+    paths:
+    - etc/init/Brewfile
 
 jobs:
   macos-init-test:

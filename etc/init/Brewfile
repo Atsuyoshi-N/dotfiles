@@ -1,9 +1,7 @@
-tap "caskroom/cask"
 tap "d12frosted/emacs-plus"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "homebrew/php"
 tap "homebrew/services"
 tap "neovim/neovim"
 tap "nyuichi/satysfi"
@@ -53,9 +51,7 @@ brew "librsvg"
 brew "libsass"
 brew "libssh"
 brew "llvm"
-brew "llvm@4"
 brew "mecab-ipadic"
-brew "mono", link: false
 brew "mupdf"
 brew "mysql@5.6", restart_service: true
 brew "mysql@5.7", link: true
@@ -90,10 +86,9 @@ brew "yarn", link: false
 brew "zsh"
 brew "d12frosted/emacs-plus/emacs-plus@27", link: false
 cask "alacritty"
-cask "alfread"
 cask "docker"
 cask "firefox"
-cask "googole-chrome"
+cask "google-chrome"
 cask "graphiql"
 cask "gyazo"
 cask "iterm2"

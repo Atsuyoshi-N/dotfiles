@@ -2,17 +2,18 @@ name: macos
 
 on:
   push:
-    paths:
-    - etc/init/Brewfile
+    branches:
+    - master
   pull_request:
-    paths:
-    - etc/init/Brewfile
+    branches:
+    - master
 
 jobs:
-  macos-init-test:
+  macos-dotfile-install-and-deploy-test:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
 
     - name: Run etc/init/install
-      run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/install)" -s init
+      run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/install)"
+

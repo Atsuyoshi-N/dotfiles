@@ -15,4 +15,4 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run etc/init/install
-      run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/init/install)" -s init
+      run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/init/install )" -s init

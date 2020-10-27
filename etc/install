@@ -163,7 +163,7 @@ dotfiles_install() {
   dotfiles_deploy &&
 
   # 3. Execute all sh files in etc/init directory
-  dotfiles_initialize
+  dotfiles_initialize "$@"
 }
 
 if [ -z "${DOTFILES_ROOT:-}" ]; then

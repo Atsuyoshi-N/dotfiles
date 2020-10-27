@@ -140,8 +140,6 @@ dotfiles_deploy() {
 
 dotfiles_initialize() {
   # bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/install)" -s init
-  e_header '$*:'
-  echo "$*"
   if [ "$1" = "init" ]; then
     e_newline && e_header "Initializing dotfiles..."
 

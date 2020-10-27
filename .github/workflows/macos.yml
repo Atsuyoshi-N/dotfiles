@@ -1,0 +1,17 @@
+name: macos
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  runs-on: macos-latest
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Run etc/init/install
+    - run: bash -c ${GITHUB_WORKSPACE/etc/init/install} -s init

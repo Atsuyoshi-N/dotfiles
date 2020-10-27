@@ -81,7 +81,7 @@ brew "vim"
 brew "vimpager"
 brew "wget"
 brew "wireshark", link: false
-brew "yarn", link: false
+brew 'yarn', args: ["ignore-dependencies"], link: false
 brew "zsh"
 brew "d12frosted/emacs-plus/emacs-plus@27", link: false
 cask "alacritty"

@@ -174,4 +174,4 @@ main() {
   dotfiles_install "$@"
 }
 
-main
+main "$@"

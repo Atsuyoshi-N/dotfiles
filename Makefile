@@ -1,7 +1,8 @@
 DOTFILES_ROOT := $(realpath ./)
-CANDIDATES    := $(wildcard .??*) bin
-EXCLUSIONS    := .DS_Store .git .gitmodules
+CANDIDATES    := $(wildcard .??*)
+EXCLUSIONS    := .DS_Store .git .gitmodules .github
 DOTFILES      := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
+TESTFILES     := $(filter-out .config, $(DOTFILES))
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
@@ -22,6 +23,10 @@ update: ## Fetch changes for this repo
 
 install: update deploy init ## Run make update, deploy, init
 	@exec $$SHELL
+
+test: ## Test if symlink files on HOME directory
+	@$(foreach val, $(TESTFILES), [[ `readlink $(HOME)/$(val)` == $(DOTFILES_ROOT)/$(val) ]] || exit 1;)
+
 
 clean: ## Remove the dot files and this repo.
 	@echo 'Remove dotfiles in your home directory...'

@@ -19,8 +19,8 @@ def test_deploy
         c += 1 if File.readlink(dest) == source
       else
         puts "source is different from symlink(dest)"
-        puts File.symlink?(dest)
-        puts source
+        puts "readlink(dest): #{File.readlink(dest)}"
+        puts "source: #{source}"
       end
     end
     # puts c

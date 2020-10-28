@@ -18,5 +18,7 @@ jobs:
       run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/install)"
 
     - name: Test if symlink files on HOME directory
-      run: make test
+      run: |
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/install)"
+        make test
 

@@ -24,9 +24,8 @@ update: ## Fetch changes for this repo
 install: update deploy init ## Run make update, deploy, init
 	@exec $$SHELL
 
-test: ## Test if symlink files on HOME directory
-	@$(foreach val, $(TESTFILES), [ `readlink $(HOME)/$(val)` = $(DOTFILES_ROOT)/$(val) ] || echo `readlink $(HOME)/$(val)`)
-
+test:
+	@ruby ./etc/test/deploy.rb
 
 clean: ## Remove the dot files and this repo.
 	@echo 'Remove dotfiles in your home directory...'

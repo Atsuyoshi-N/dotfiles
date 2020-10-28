@@ -25,7 +25,7 @@ install: update deploy init ## Run make update, deploy, init
 	@exec $$SHELL
 
 test: ## Test if symlink files on HOME directory
-	@$(foreach val, $(TESTFILES), [[ `readlink $(HOME)/$(val)` == $(DOTFILES_ROOT)/$(val) ]] || exit 1;)
+	@$(foreach val, $(TESTFILES), [ `readlink $(HOME)/$(val)` = $(DOTFILES_ROOT)/$(val) ] || exit 1;)
 
 
 clean: ## Remove the dot files and this repo.

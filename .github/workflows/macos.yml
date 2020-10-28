@@ -18,5 +18,8 @@ jobs:
       run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/install)"
 
     - name: Test if symlink files on HOME directory
-      run: ruby etc/test/deploy.rb
+      shell: bash
+      run: |
+        set -x
+        ./etc/test/deploy.rb
 

@@ -17,9 +17,3 @@ jobs:
     - name: Run etc/init/install
       run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/etc/install)"
 
-    - name: Test if symlink files on HOME directory
-      shell: bash
-      run: |
-        set -x
-        ./etc/test/deploy.rb
-

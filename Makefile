@@ -24,9 +24,6 @@ update: ## Fetch changes for this repo
 install: update deploy init ## Run make update, deploy, init
 	@exec $$SHELL
 
-test:
-	@ruby ./etc/test/deploy.rb
-
 clean: ## Remove the dot files and this repo.
 	@echo 'Remove dotfiles in your home directory...'
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)

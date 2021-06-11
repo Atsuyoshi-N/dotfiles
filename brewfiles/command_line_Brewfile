@@ -1,8 +1,5 @@
-brew 'emacs'
-brew 'emacs-plus'
 brew 'fzf'
 brew 'ghq'
-brew 'gibo'
 brew 'git-flow'
 brew 'git-now'
 brew 'hub'

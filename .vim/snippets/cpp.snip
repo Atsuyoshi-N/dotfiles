@@ -86,8 +86,8 @@ snippet lcm
 
 snippet mint
   struct mint {
-    ll x;
-    mint(ll x=0):x(x%mod){}
+    ll x; // typedef long long ll;
+    mint(ll x=0):x((x%mod+mod)%mod){}
     mint operator-() const { return mint(-x);}
     mint& operator+=(const mint a) {
       if ((x += a.x) >= mod) x -= mod;
@@ -97,22 +97,10 @@ snippet mint
       if ((x += mod-a.x) >= mod) x -= mod;
       return *this;
     }
-    mint& operator*=(const mint a) {
-      (x *= a.x) %= mod;
-      return *this;
-    }
-    mint operator+(const mint a) const {
-      mint res(*this);
-      return res+=a;
-    }
-    mint operator-(const mint a) const {
-      mint res(*this);
-      return res-=a;
-    }
-    mint operator*(const mint a) const {
-      mint res(*this);
-      return res*=a;
-    }
+    mint& operator*=(const mint a) { (x *= a.x) %= mod; return *this;}
+    mint operator+(const mint a) const { return mint(*this) += a;}
+    mint operator-(const mint a) const { return mint(*this) -= a;}
+    mint operator*(const mint a) const { return mint(*this) *= a;}
     mint pow(ll t) const {
       if (!t) return 1;
       mint a = pow(t>>1);
@@ -122,18 +110,12 @@ snippet mint
     }
 
     // for prime mod
-    mint inv() const {
-      return pow(mod-2);
-    }
-    mint& operator/=(const mint a) {
-      return (*this) *= a.inv();
-    }
-    mint operator/(const mint a) const {
-      mint res(*this);
-      return res/=a;
-    }
+    mint inv() const { return pow(mod-2);}
+    mint& operator/=(const mint a) { return *this *= a.inv();}
+    mint operator/(const mint a) const { return mint(*this) /= a;}
   };
-
+  istream& operator>>(istream& is, mint& a) { return is >> a.x;}
+  ostream& operator<<(ostream& os, const mint& a) { return os << a.x;}
 snippet mint_combination
 alias mintcomb
   struct combination {
@@ -314,5 +296,15 @@ snippet modpow
       n >>= 1;
     }
     return ret;
+  }
+
+snippet to_rad
+  double to_rad(double deg) {
+    return deg * (M_PI / 180.);
+  }
+
+snippet to_deg
+  double to_deg(double rad) {
+    return rad * (180. / M_PI);
   }
 

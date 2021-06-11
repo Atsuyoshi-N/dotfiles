@@ -275,6 +275,7 @@ export CPATH=`xcrun --show-sdk-path`/usr/include
 
 export PATH=$PATH:/usr/local/bin
 
+export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 

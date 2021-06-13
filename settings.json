@@ -1,25 +1,53 @@
 // "this is VSCode settings.json, place $HOME/Library/Application Support/Code/User/settings.json"
 {
-    "editor.tabsize": 2,
-    "workbench.colorTheme": "Vim Hybrid Theme",
-    "workbench.startupEditor": "newUntitledFile",
-    "vim.useSystemClipboard": true,
-    "vim.visualstar": true,
-    "vim.hlsearch": true,
-    "vim.insertModeKeyBindings": [
-        {
-        "before":["j","k"],
-        "after":["<Esc>"]
-        }
-    ],
-    "vim.leader": "<space>",
-    "[ruby]": {
-      "editor.formatOnSave": true
+    // vim
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.renderWhitespace": "boundary",
+  "workbench.colorTheme": "Vim Hybrid Theme",
+  "workbench.startupEditor": "newUntitledFile",
+  "vim.useSystemClipboard": true,
+  "vim.visualstar": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     },
-    "[typescript]": {
-      "editor.formatOnSave": true
-    },
-    "[typescriptreact]": {
-      "editor.formatOnSave": true
-    }
+  ],
+  "vim.leader": "<space>",
+  "editor.formatOnSave": true,
+  "[ruby]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  }
+  // Prettier
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.tabCompletion": "on",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Others
+  "window.zoomLevel": 0,
+  "files.insertFinalNewline": true,
+  "tabnine.experimentalAutoImports": true,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.editor.enablePreview": false
 }

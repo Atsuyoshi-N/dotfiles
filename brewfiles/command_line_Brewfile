@@ -8,6 +8,6 @@ brew 'lua'
 brew 'neovim'
 brew 'tig'
 brew 'tmux'
-brew 'vim', args: ['--with-lua', '--with-python3']
+brew 'vim'
 brew 'vimpager'
 brew 'zsh'

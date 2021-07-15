@@ -282,3 +282,5 @@ export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 if [ -d "$HOME/ac-library" ]; then
   export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/ac-library"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

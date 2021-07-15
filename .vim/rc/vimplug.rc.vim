@@ -90,6 +90,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 call s:source_setting_file('lightline.rc.vim')
 
+" Fuzzy finder
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 " Easy to mark up
 Plug 'mattn/emmet-vim'
 call s:source_setting_file('emmet-vim.rc.vim')

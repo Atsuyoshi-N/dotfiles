@@ -142,6 +142,10 @@ call s:source_setting_file('coc.rc.vim')
 " ========== Golang ==========
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
+" ========== Rust ==========
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+let g:rustfmt_autosave = 1
+
 " ========== Ruby ===========
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 

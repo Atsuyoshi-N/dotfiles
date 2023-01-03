@@ -117,7 +117,7 @@ alias gffc='git flow feature checkout'
 alias vim='nvim'
 
 # g++
-alias g++='g++ -std=c++14'
+alias g++='g++ -std=c++17'
 
 # -------------------------------------
 # キーバインド
@@ -284,3 +284,4 @@ if [ -d "$HOME/ac-library" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/qt@5/bin:$PATH"

@@ -145,6 +145,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " ========== Rust ==========
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 let g:rustfmt_autosave = 1
+let g:syntastic_rust_checkers = ['cargo', 'rustc']
 
 " ========== Ruby ===========
 Plug 'tpope/vim-rails', { 'for': 'ruby' }

@@ -42,4 +42,5 @@ export PATH=$PATH:$HOME/.nodebrew/current/bin
 # export PATH=$PATH:/usr/bin
 export XDG_CONFIG_HOME=$HOME/.config # neovim
 export PGDATA='/usr/local/var/postgres'
+fpath+=~/dotfiles/.zsh_functions
 

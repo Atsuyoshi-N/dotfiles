@@ -135,11 +135,6 @@ zle -N cdup
 bindkey "^R" history-incremental-search-backward
 
 # -------------------------------------
-# hub setting
-# -------------------------------------
-function git(){hub "$@"}
-
-# -------------------------------------
 # fzf
 # References: https://github.com/junegunn/fzf/wiki/examples
 # -------------------------------------
@@ -267,9 +262,6 @@ function title {
     echo -ne "\033]0;"$*"\007"
 }
 
-eval "$(rbenv init -)"
-
-export JAVA_HOME=`/usr/libexec/java_home -v "11.0.2"`
 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 export CPATH=`xcrun --show-sdk-path`/usr/include
 
@@ -285,3 +277,11 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/atsuyoshi/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Added by Antigravity
+export PATH="/Users/atsuyoshi/.antigravity/antigravity/bin:$PATH"

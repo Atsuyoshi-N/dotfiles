@@ -11,7 +11,7 @@ export EDITOR=/usr/bin/vim
 
 # ページャ
 export PAGER=/usr/local/bin/vimpager
-export MANPAGER=/usr/local/bin/vimpager
+export PAGER=/opt/homebrew/bin/vimpager
 
 path=(
     $HOME/bin(N-/)

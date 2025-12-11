@@ -8,9 +8,6 @@ return {
       "hrsh7th/cmp-nvim-lsp", -- 補完ソースも依存関係に含める
     },
     config = function()
-      if vim.bo.filetype == "fyler" then
-        return
-      end
       -- 1. モジュールの読み込み
       local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")

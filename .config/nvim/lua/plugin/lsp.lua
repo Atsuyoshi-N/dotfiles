@@ -19,12 +19,16 @@ return {
       -- 3. Mason-LSPConfigのセットアップ
       mason_lspconfig.setup({
         ensure_installed = {
+          "astro",
           "lua_ls",
           "ts_ls",
           "pyright",
           "rust_analyzer",
           "gopls",
           "jsonls",
+          "htmx",
+          "marksman",
+          "mdx_analyzer",
         },
         automatic_installation = true,
       })

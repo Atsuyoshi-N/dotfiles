@@ -50,4 +50,4 @@
 [fetch]
   prune = true
 [ghq]
-  root = $HOME/repositories
+  root = ~/repo

@@ -12,6 +12,7 @@ return {
       },
       -- インストールするパーサー
       ensure_installed = {
+        "astro",
         "markdown",
         "markdown_inline",
         "lua",

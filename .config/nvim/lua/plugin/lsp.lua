@@ -3,11 +3,22 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      "folke/neodev.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
+      -- Setup neodev before lspconfig
+      require("neodev").setup({
+        library = {
+          enabled = true,
+          runtime = true,
+          types = true,
+          plugins = false,
+        },
+      })
+
       local lspconfig = require("lspconfig")
       local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")

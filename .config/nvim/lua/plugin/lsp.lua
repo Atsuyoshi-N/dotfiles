@@ -12,6 +12,12 @@ return {
       local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")
 
+      -- Inlay Hintsの色設定（明るめのグレー）
+      vim.api.nvim_set_hl(0, 'LspInlayHint', {
+        fg = '#999999',  -- 明るめのグレー
+        italic = true,   -- イタリック体（お好みで調整可）
+      })
+
       -- 1. Mason Setup
       mason.setup()
 
@@ -48,9 +54,18 @@ return {
           local bufnr = args.buf
           enable_inlay_hints(client, bufnr)
 
-          -- ここにキーマップ設定などを追加することも可能です
-          -- local opts = { buffer = bufnr }
-          -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+          -- Inlay Hintsトグルキーマップ
+          vim.keymap.set('n', '<leader>th', function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+          end, { buffer = bufnr, desc = 'Toggle Inlay Hints' })
+
+          -- 診断関連キーマップ
+          vim.keymap.set('n', 'gl', vim.diagnostic.open_float,
+            { buffer = bufnr, desc = 'Show line diagnostics' })
+          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,
+            { buffer = bufnr, desc = 'Go to previous diagnostic' })
+          vim.keymap.set('n', ']d', vim.diagnostic.goto_next,
+            { buffer = bufnr, desc = 'Go to next diagnostic' })
         end,
       })
 

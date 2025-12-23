@@ -9,7 +9,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-      -- Setup neodev before lspconfig
+      -- Setup neodev before LSP
       require("neodev").setup({
         library = {
           enabled = true,
@@ -19,7 +19,6 @@ return {
         },
       })
 
-      local lspconfig = require("lspconfig")
       local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")
 
@@ -109,7 +108,9 @@ return {
 
         -- ★ここ重要: エラーが出てもNeovim全体が落ちないように保護してsetupする
         local setup_ok, err = pcall(function()
-            lspconfig[server].setup(opts)
+            -- Neovim 0.11+ の新しいAPI
+            vim.lsp.config(server, opts)
+            vim.lsp.enable(server)
         end)
 
         if not setup_ok then

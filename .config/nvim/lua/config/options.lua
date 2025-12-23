@@ -65,3 +65,21 @@ vim.opt.showcmd = false
 
 --- enable clipboard
 vim.opt.clipboard:append("unnamedplus")
+
+-- neovim以外でファイル変更があった後、neovimに復帰した際に自動で同期する
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  callback = function()
+    -- Only reload if buffer is not modified and not in command-line mode
+    if vim.fn.mode() ~= "c" and not vim.bo.modified then
+      vim.cmd("checktime")
+    end
+  end,
+})
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  pattern = "*",
+  callback = function ()
+    vim.api.nvim_echo({ { "File changed on disk. Buffer reloaded.", "WarningMsg" } }, false, {})
+  end,
+})

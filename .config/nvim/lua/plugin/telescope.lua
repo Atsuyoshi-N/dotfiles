@@ -16,6 +16,35 @@ return {
     keys = {
       { "tel", "Telescope", mode = "ca" },
       { ",,", "<cmd>Telescope smart_open<cr>" },
+
+      -- Basic search
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+      { "<leader>fg", "<cmd>Telescope egrepify<cr>", desc = "Live grep" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+
+      -- LSP
+      { "<leader>ld", "<cmd>Telescope lsp_definitions<cr>", desc = "LSP definitions" },
+      { "<leader>lr", "<cmd>Telescope lsp_references<cr>", desc = "LSP references" },
+      { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP document symbols" },
+      { "<leader>lw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "LSP workspace symbols" },
+      { "<leader>li", "<cmd>Telescope lsp_implementations<cr>", desc = "LSP implementations" },
+      { "<leader>lt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "LSP type definitions" },
+
+      -- Help & Config
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
+      { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+      { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+      { "<leader>fo", "<cmd>Telescope vim_options<cr>", desc = "Vim options" },
+
+      -- Extensions
+      { "<leader>fm", "<cmd>Telescope heading<cr>", desc = "Markdown headings" },
+      { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide directories" },
+      { "<leader>fq", "<cmd>Telescope ghq list<cr>", desc = "GHQ repositories" },
+      { "<leader>fp", "<cmd>Telescope lazy<cr>", desc = "Lazy plugins" },
+      { "<leader>fe", "<cmd>Telescope env<cr>", desc = "Environment variables" },
+      { "<leader>gh", "<cmd>Telescope gh<cr>", desc = "GitHub" },
     },
     config = function()
       local function telescope_grep_any()
@@ -179,19 +208,16 @@ return {
                   set_env = { ["COLORTERM"] = "truecolor" },
                   -- buffer_previewer_maker = new_maker,
                   winblend = 20,
-                  layout_strategy = "flex",
+                  wrap_results = true,
+                  layout_strategy = "vertical",
                   layout_config = {
-                    width = 0.8,
-                    height = 0.8,
-                    horizontal = {
-                      mirror = false,
-                      prompt_position = "top",
-                      preview_width = 0.5,
-                    },
+                    width = 0.95,
+                    height = 0.95,
+                    preview_cutoff = 20,
                     vertical = {
                       mirror = false,
                       prompt_position = "top",
-                      preview_height = 0.3,
+                      preview_height = 0.4,
                     },
                   },
                 }),

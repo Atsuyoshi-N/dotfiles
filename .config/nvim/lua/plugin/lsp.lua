@@ -64,6 +64,31 @@ return {
           local bufnr = args.buf
           enable_inlay_hints(client, bufnr)
 
+          -- LSP ナビゲーション（Telescopeを使って一覧表示）
+          vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>',
+            { buffer = bufnr, desc = 'Go to definition (Telescope)' })
+          vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>',
+            { buffer = bufnr, desc = 'Show references (Telescope)' })
+          vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>',
+            { buffer = bufnr, desc = 'Go to implementation (Telescope)' })
+          vim.keymap.set('n', 'gt', '<cmd>Telescope lsp_type_definitions<cr>',
+            { buffer = bufnr, desc = 'Go to type definition (Telescope)' })
+
+          -- その他のLSP機能
+          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+            { buffer = bufnr, desc = 'Go to declaration' })
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover,
+            { buffer = bufnr, desc = 'Hover documentation' })
+          vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help,
+            { buffer = bufnr, desc = 'Signature help' })
+          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,
+            { buffer = bufnr, desc = 'Rename symbol' })
+          vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action,
+            { buffer = bufnr, desc = 'Code action' })
+          vim.keymap.set('n', '<leader>f', function()
+            vim.lsp.buf.format({ async = true })
+          end, { buffer = bufnr, desc = 'Format buffer' })
+
           -- Inlay Hintsトグルキーマップ
           vim.keymap.set('n', '<leader>th', function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })

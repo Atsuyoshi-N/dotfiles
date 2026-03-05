@@ -6,6 +6,7 @@ return {
     { "<Space>sm", ":RenderMarkdown toggle<CR>" },
   },
   opts = {
+    --- ref: https://eiji.page/blog/neovim-render-markdown-nvim/
     render_modes = true,
     heading = {
       width = "block",

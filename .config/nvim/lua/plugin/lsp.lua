@@ -9,6 +9,47 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
+      -- ===== Error Lens 風の設定 =====
+      local colors = require("core.colors")
+      local palette = colors.palette
+
+      -- 診断行のハイライト定義
+      local function set_diagnostic_highlights()
+        vim.api.nvim_set_hl(0, "DiagnosticErrorLine", { bg = colors.alpha_blend(palette.red, palette.base, 0.15) })
+        vim.api.nvim_set_hl(0, "DiagnosticWarnLine", { bg = colors.alpha_blend(palette.yellow, palette.base, 0.15) })
+        vim.api.nvim_set_hl(0, "DiagnosticHintLine", { bg = colors.alpha_blend(palette.green, palette.base, 0.15) })
+        vim.api.nvim_set_hl(0, "DiagnosticInfoLine", { bg = colors.alpha_blend(palette.blue, palette.base, 0.15) })
+      end
+
+      set_diagnostic_highlights()
+
+      -- ColorScheme 変更時にも再適用
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        group = vim.api.nvim_create_augroup("DiagnosticLineHighlights", { clear = true }),
+        pattern = "*",
+        callback = set_diagnostic_highlights,
+      })
+
+      -- 診断表示の設定
+      vim.diagnostic.config({
+        virtual_text = true,  -- 行末に診断メッセージを表示
+        severity_sort = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "󰅚 ",
+            [vim.diagnostic.severity.WARN] = "󰀪 ",
+            [vim.diagnostic.severity.HINT] = "󰌶 ",
+            [vim.diagnostic.severity.INFO] = " ",
+          },
+          linehl = {
+            [vim.diagnostic.severity.ERROR] = "DiagnosticErrorLine",
+            [vim.diagnostic.severity.WARN] = "DiagnosticWarnLine",
+            [vim.diagnostic.severity.HINT] = "DiagnosticHintLine",
+            [vim.diagnostic.severity.INFO] = "DiagnosticInfoLine",
+          },
+        },
+      })
+
       -- Setup neodev before LSP
       require("neodev").setup({
         library = {

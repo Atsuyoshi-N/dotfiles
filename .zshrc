@@ -3,6 +3,10 @@
 # -------------------------------------
 
 ## 補完機能の強化
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH=$(brew --prefix)/share/zsh-abbr:$FPATH
+fi
 autoload -U compinit
 compinit
 
@@ -91,7 +95,7 @@ PROMPT+="%% "
 RPROMPT="[%*]"
 
 # -------------------------------------
-# エイリアス
+# エイリアス (デフォルトオプション上書き系のみ残す)
 # -------------------------------------
 
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
@@ -99,25 +103,34 @@ alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude
 
 # ls
 alias ls="ls -G" # color for darwin
-alias l="ls -la"
-alias la="ls -la"
-alias l1="ls -1"
 
 # tree
 alias tree="tree -NC" # N: 文字化け対策, C:色をつける
-
-# tmux
-alias ta="tmux a"
-
-# git
-alias g='git'
-alias gffc='git flow feature checkout'
 
 # vim
 alias vim='nvim'
 
 # g++
 alias g++='g++ -std=c++17'
+
+# -------------------------------------
+# Abbreviations (fish風の展開型省略形)
+# スペースやEnterで展開されるので、実行前に実際のコマンドを確認できる
+# -------------------------------------
+
+abbr_commands=(
+  "l=ls -la"
+  "la=ls -la"
+  "l1=ls -1"
+  "ta=tmux a"
+  "g=git"
+  "gffc=git flow feature checkout"
+)
+
+for cmd in "${abbr_commands[@]}"; do
+  abbr -S -qq "$cmd" 2>/dev/null
+done
+unset abbr_commands
 
 # -------------------------------------
 # キーバインド
@@ -297,3 +310,16 @@ export PATH="$PATH:/Users/atsuyoshi/.lmstudio/bin"
 
 # Added by Antigravity
 export PATH="/Users/atsuyoshi/.antigravity/antigravity/bin:$PATH"
+
+# -------------------------------------
+# プラグイン
+# -------------------------------------
+
+# zsh-abbr: fish風の展開型abbreviation
+source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
+
+# zsh-autosuggestions: 履歴ベースの入力候補をグレー表示 (→キーで確定)
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting: 入力中のコマンドに色付け (必ず最後に読み込む)
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

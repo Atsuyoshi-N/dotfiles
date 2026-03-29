@@ -1,0 +1,12 @@
+# Font
+font-family = Hack Nerd Font Mono
+font-size = 12
+
+# Option key as Meta (for tmux M-h/l window navigation)
+macos-option-as-alt = true
+
+# Shell
+shell-integration-features = cursor,sudo,title
+
+# Shift+Enter for newline in Claude Code
+keybind = shift+enter=text:\x1b[13;2u

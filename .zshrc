@@ -113,24 +113,6 @@ alias vim='nvim'
 # g++
 alias g++='g++ -std=c++17'
 
-# -------------------------------------
-# Abbreviations (fish風の展開型省略形)
-# スペースやEnterで展開されるので、実行前に実際のコマンドを確認できる
-# -------------------------------------
-
-abbr_commands=(
-  "l=ls -la"
-  "la=ls -la"
-  "l1=ls -1"
-  "ta=tmux a"
-  "g=git"
-  "gffc=git flow feature checkout"
-)
-
-for cmd in "${abbr_commands[@]}"; do
-  abbr -S -qq "$cmd" 2>/dev/null
-done
-unset abbr_commands
 
 # -------------------------------------
 # キーバインド
@@ -225,6 +207,33 @@ tm() {
     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
   fi
   session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+}
+
+# dev - プロジェクト用4ウィンドウtmuxセッションを起動
+# 使い方: dev [セッション名]  (省略時はカレントディレクトリ名)
+# ウィンドウ構成: 1:nvim  2:terminal  3:claude  4:lazygit
+dev() {
+  local session_name=${1:-$(basename "$PWD")}
+
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    [[ -n "$TMUX" ]] && tmux switch-client -t "$session_name" || tmux attach-session -t "$session_name"
+    return
+  fi
+
+  tmux new-session  -d -s "$session_name" -n "nvim"     -c "$PWD"
+  tmux send-keys    -t "$session_name:1" "nvim ." Enter
+
+  tmux new-window   -t "$session_name" -n "terminal" -c "$PWD"
+
+  tmux new-window   -t "$session_name" -n "claude"   -c "$PWD"
+  tmux send-keys    -t "$session_name:3" "claude" Enter
+
+  tmux new-window   -t "$session_name" -n "lazygit"  -c "$PWD"
+  tmux send-keys    -t "$session_name:4" "lazygit" Enter
+
+  tmux select-window -t "$session_name:1"
+
+  [[ -n "$TMUX" ]] && tmux switch-client -t "$session_name" || tmux attach-session -t "$session_name"
 }
 
 # homebrew
@@ -323,3 +332,23 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting: 入力中のコマンドに色付け (必ず最後に読み込む)
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# -------------------------------------
+# Abbreviations (fish風の展開型省略形)
+# スペースやEnterで展開されるので、実行前に実際のコマンドを確認できる
+# zsh-abbr の source より後に定義する必要がある
+# -------------------------------------
+
+abbr_commands=(
+  "l=ls -la"
+  "la=ls -la"
+  "l1=ls -1"
+  "ta=tmux a"
+  "g=git"
+  "gffc=git flow feature checkout"
+)
+
+for cmd in "${abbr_commands[@]}"; do
+  abbr -S -qq "$cmd" 2>/dev/null
+done
+unset abbr_commands

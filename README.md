@@ -1,79 +1,89 @@
 # dotfiles
 
-# Getting Started
+nix-darwin + home-manager + flakes で macOS の開発環境を宣言的に管理する。
 
-```
-$ cd ~/
-$ curl -fsSL https://raw.githubusercontent.com/Atsuyoshi-N/dotfiles/master/initialize_mac.sh | sh
-```
+## Getting Started
 
-# Setup
+### 1. Nix をインストール
 
-### neovim
-
-## Python Env
-
-For python environment, I use Python3.x, pip, and venv.
-
-### Python3
-
-```
-$ brew install python3
+```sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-### pip
+インストール後、シェルを再起動する。
 
-If you use Python3.x(x more than4), pip has been a standard feature.
-You can check whether pip is installed or not by next command.
-
-```
-$ pip -V
+```sh
+exec $SHELL
 ```
 
-When pip is not installed, type next command
+### 2. Homebrew をインストール
 
-```
-$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-$ python get-pip.py
-```
+GUIアプリ（cask）の管理に必要。
 
-### venv
-
-create new environment
-
-```
-$ cd [project dir]
-$ python3 -m venv [newenvname]
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-#### Activate
+### 3. dotfiles をクローン
 
-- Linux, Mac
-
-```
-$ source [newenvname]/bin/activate
+```sh
+git clone https://github.com/Atsuyoshi-N/dotfiles.git ~/dotfiles
 ```
 
-- Windows
+### 4. ホスト名を確認・設定
 
-```
-$ .\[newenvname]\Scripts\activate
-```
-
-#### install packages
-
-```
-([newenvname])$ pip install [package name]
+```sh
+scutil --get LocalHostName
 ```
 
-#### check installed packages
+出力されたホスト名が `flake.nix` の `darwinConfigurations` に存在することを確認する。
+新しいマシンの場合は、`nix/hosts/` にホスト別の設定ファイルを作成し、`flake.nix` にエントリを追加する。
+
+### 5. ビルド・適用
+
+初回:
+
+```sh
+cd ~/dotfiles
+sudo nix run nix-darwin -- switch --flake .
+```
+
+2回目以降（`rebuild` abbr が使える）:
+
+```sh
+rebuild
+# 展開: sudo --preserve-env=PATH darwin-rebuild switch --flake ~/dotfiles
+```
+
+## 構成
 
 ```
-([newenvname]) $ pip freeze
+dotfiles/
+  flake.nix                    # エントリーポイント
+  nix/
+    hosts/
+      personal.nix             # 個人Mac固有設定
+      work.nix                 # 仕事Mac固有設定
+    modules/
+      common.nix               # 共通設定
+      home.nix                 # CLIツール + dotfilesシンボリックリンク
+      darwin-defaults.nix      # macOSシステム設定
+      homebrew.nix             # Homebrew cask管理
+      shell.nix                # zshプラグイン
+  .zshrc / .zshenv / ...       # 各種設定ファイル（そのまま管理）
+  .config/nvim/ ...            # XDG設定ディレクトリ
 ```
 
-#### Deactivate
+## 新しいマシンを追加する
 
-```
-([newenvname])$ deactivate
-```
+1. `nix/hosts/` に新しいホスト設定ファイルを作成（`personal.nix` や `work.nix` を参考に）
+2. `flake.nix` の `darwinConfigurations` にエントリを追加
+3. ビルド・適用
+
+## パッケージの追加・変更
+
+- **CLIツール**: `nix/modules/home.nix` の `home.packages` に追加
+- **GUIアプリ**: `nix/modules/homebrew.nix` の `casks` に追加（ホスト固有の場合はホスト設定ファイルに）
+- **macOS設定**: `nix/modules/darwin-defaults.nix` を編集
+
+変更後は `darwin-rebuild switch` で適用する。

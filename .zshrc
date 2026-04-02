@@ -3,9 +3,18 @@
 # -------------------------------------
 
 ## 補完機能の強化
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-  FPATH=$(brew --prefix)/share/zsh-abbr:$FPATH
+# Nix or Homebrew plugin paths
+if [[ -d "/run/current-system/sw/share" ]]; then
+  _plugin_base="/run/current-system/sw/share"
+  _abbr_dir="${_plugin_base}/zsh/zsh-abbr"
+elif type brew &>/dev/null; then
+  _plugin_base="$(brew --prefix)/share"
+  _abbr_dir="${_plugin_base}/zsh-abbr"
+fi
+
+if [[ -n "$_plugin_base" ]]; then
+  FPATH=${_plugin_base}/zsh-completions:$FPATH
+  FPATH=${_abbr_dir}:$FPATH
 fi
 autoload -U compinit
 compinit
@@ -325,13 +334,13 @@ export PATH="/Users/atsuyoshi/.antigravity/antigravity/bin:$PATH"
 # -------------------------------------
 
 # zsh-abbr: fish風の展開型abbreviation
-source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
+source ${_abbr_dir}/zsh-abbr.zsh
 
 # zsh-autosuggestions: 履歴ベースの入力候補をグレー表示 (→キーで確定)
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${_plugin_base}/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting: 入力中のコマンドに色付け (必ず最後に読み込む)
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${_plugin_base}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # -------------------------------------
 # Abbreviations (fish風の展開型省略形)
@@ -346,6 +355,7 @@ abbr_commands=(
   "ta=tmux a"
   "g=git"
   "gffc=git flow feature checkout"
+  "rebuild=sudo --preserve-env=PATH darwin-rebuild switch --flake ~/dotfiles"
 )
 
 for cmd in "${abbr_commands[@]}"; do

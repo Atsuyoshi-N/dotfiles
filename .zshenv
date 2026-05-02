@@ -15,6 +15,8 @@ export PAGER=/opt/homebrew/bin/vimpager
 
 path=(
     $HOME/bin(N-/)
+    /opt/homebrew/bin(N-/)
+    /opt/homebrew/sbin(N-/)
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
     $path

@@ -33,6 +33,8 @@
       # Utilities
       "1password"
       "alt-tab"
+      "amical"
+      "raycast"
       "rectangle"
 
       # Fonts
@@ -40,6 +42,8 @@
     ];
 
     # Homebrew formulae (for things not in nixpkgs or that work better via brew)
-    brews = [ ];
+    brews = [
+      "zoxide"
+    ];
   };
 }

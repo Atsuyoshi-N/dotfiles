@@ -223,6 +223,7 @@ tm() {
 # ウィンドウ構成: 1:nvim  2:terminal  3:claude  4:lazygit
 dev() {
   local session_name=${1:-$(basename "$PWD")}
+  session_name=${session_name//./_}
 
   if tmux has-session -t "$session_name" 2>/dev/null; then
     [[ -n "$TMUX" ]] && tmux switch-client -t "$session_name" || tmux attach-session -t "$session_name"
@@ -287,8 +288,9 @@ function ghq-fzf() {
   if [ -n "$src" ]; then
     BUFFER="cd $(ghq root)/$src"
     zle accept-line
+  else
+    zle reset-prompt
   fi
-  zle -R -c
 }
 zle -N ghq-fzf
 bindkey '^g' ghq-fzf
@@ -319,12 +321,15 @@ if [ -d "$HOME/ac-library" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(zoxide init zsh)"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/atsuyoshi/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# Claude Code
+export PATH="$HOME/.local/bin:$PATH"
 
 # Added by Antigravity
 export PATH="/Users/atsuyoshi/.antigravity/antigravity/bin:$PATH"
@@ -353,7 +358,12 @@ abbr_commands=(
   "la=ls -la"
   "l1=ls -1"
   "ta=tmux a"
+  "tkses=tmux kill-session -t"
+  "tkser=tmux kill-server"
   "g=git"
+  "gc=git commit -m"
+  "gsw=git switch"
+  "gs=git status"
   "gffc=git flow feature checkout"
   "rebuild=sudo --preserve-env=PATH darwin-rebuild switch --flake ~/dotfiles"
 )

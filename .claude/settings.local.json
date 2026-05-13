@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(# Let me check the stdin JSON that Claude provides - test with mock data\necho '{\"model\":{\"display_name\":\"test\"},\"context_window\":{\"used_percentage\":50},\"workspace\":{\"current_dir\":\"/tmp\"}}' | bash ~/.claude/statusline-command.sh 2>&1)",
+      "Bash(strings:*)"
+    ]
+  }
+}

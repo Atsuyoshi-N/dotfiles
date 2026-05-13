@@ -3,6 +3,19 @@
 # -------------------------------------
 
 ## 補完機能の強化
+# Nix or Homebrew plugin paths
+if [[ -d "/run/current-system/sw/share" ]]; then
+  _plugin_base="/run/current-system/sw/share"
+  _abbr_dir="${_plugin_base}/zsh/zsh-abbr"
+elif type brew &>/dev/null; then
+  _plugin_base="$(brew --prefix)/share"
+  _abbr_dir="${_plugin_base}/zsh-abbr"
+fi
+
+if [[ -n "$_plugin_base" ]]; then
+  FPATH=${_plugin_base}/zsh-completions:$FPATH
+  FPATH=${_abbr_dir}:$FPATH
+fi
 autoload -U compinit
 compinit
 
@@ -91,7 +104,7 @@ PROMPT+="%% "
 RPROMPT="[%*]"
 
 # -------------------------------------
-# エイリアス
+# エイリアス (デフォルトオプション上書き系のみ残す)
 # -------------------------------------
 
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
@@ -99,25 +112,16 @@ alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude
 
 # ls
 alias ls="ls -G" # color for darwin
-alias l="ls -la"
-alias la="ls -la"
-alias l1="ls -1"
 
 # tree
 alias tree="tree -NC" # N: 文字化け対策, C:色をつける
-
-# tmux
-alias ta="tmux a"
-
-# git
-alias g='git'
-alias gffc='git flow feature checkout'
 
 # vim
 alias vim='nvim'
 
 # g++
 alias g++='g++ -std=c++17'
+
 
 # -------------------------------------
 # キーバインド
@@ -133,11 +137,6 @@ function cdup() {
 zle -N cdup
 
 bindkey "^R" history-incremental-search-backward
-
-# -------------------------------------
-# hub setting
-# -------------------------------------
-function git(){hub "$@"}
 
 # -------------------------------------
 # fzf
@@ -219,6 +218,34 @@ tm() {
   session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
+# dev - プロジェクト用4ウィンドウtmuxセッションを起動
+# 使い方: dev [セッション名]  (省略時はカレントディレクトリ名)
+# ウィンドウ構成: 1:nvim  2:terminal  3:claude  4:lazygit
+dev() {
+  local session_name=${1:-$(basename "$PWD")}
+  session_name=${session_name//./_}
+
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    [[ -n "$TMUX" ]] && tmux switch-client -t "$session_name" || tmux attach-session -t "$session_name"
+    return
+  fi
+
+  tmux new-session  -d -s "$session_name" -n "nvim"     -c "$PWD"
+  tmux send-keys    -t "$session_name:1" "nvim ." Enter
+
+  tmux new-window   -t "$session_name" -n "terminal" -c "$PWD"
+
+  tmux new-window   -t "$session_name" -n "claude"   -c "$PWD"
+  tmux send-keys    -t "$session_name:3" "claude" Enter
+
+  tmux new-window   -t "$session_name" -n "lazygit"  -c "$PWD"
+  tmux send-keys    -t "$session_name:4" "lazygit" Enter
+
+  tmux select-window -t "$session_name:1"
+
+  [[ -n "$TMUX" ]] && tmux switch-client -t "$session_name" || tmux attach-session -t "$session_name"
+}
+
 # homebrew
 
 # Install (one or multiple) selected application(s)
@@ -255,6 +282,19 @@ bcp() {
   fi
 }
 
+# ghq + fzf search
+function ghq-fzf() {
+  local src=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  if [ -n "$src" ]; then
+    BUFFER="cd $(ghq root)/$src"
+    zle accept-line
+  else
+    zle reset-prompt
+  fi
+}
+zle -N ghq-fzf
+bindkey '^g' ghq-fzf
+
 # -------------------------------------
 # その他
 # -------------------------------------
@@ -267,9 +307,6 @@ function title {
     echo -ne "\033]0;"$*"\007"
 }
 
-eval "$(rbenv init -)"
-
-export JAVA_HOME=`/usr/libexec/java_home -v "11.0.2"`
 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 export CPATH=`xcrun --show-sdk-path`/usr/include
 
@@ -284,4 +321,54 @@ if [ -d "$HOME/ac-library" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(zoxide init zsh)"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/atsuyoshi/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# Claude Code
+export PATH="$HOME/.local/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/atsuyoshi/.antigravity/antigravity/bin:$PATH"
+
+# -------------------------------------
+# プラグイン
+# -------------------------------------
+
+# zsh-abbr: fish風の展開型abbreviation
+source ${_abbr_dir}/zsh-abbr.zsh
+
+# zsh-autosuggestions: 履歴ベースの入力候補をグレー表示 (→キーで確定)
+source ${_plugin_base}/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting: 入力中のコマンドに色付け (必ず最後に読み込む)
+source ${_plugin_base}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# -------------------------------------
+# Abbreviations (fish風の展開型省略形)
+# スペースやEnterで展開されるので、実行前に実際のコマンドを確認できる
+# zsh-abbr の source より後に定義する必要がある
+# -------------------------------------
+
+abbr_commands=(
+  "l=ls -la"
+  "la=ls -la"
+  "l1=ls -1"
+  "ta=tmux a"
+  "tkses=tmux kill-session -t"
+  "tkser=tmux kill-server"
+  "g=git"
+  "gc=git commit -m"
+  "gsw=git switch"
+  "gs=git status"
+  "gffc=git flow feature checkout"
+  "rebuild=sudo --preserve-env=PATH darwin-rebuild switch --flake ~/dotfiles"
+)
+
+for cmd in "${abbr_commands[@]}"; do
+  abbr -S -qq "$cmd" 2>/dev/null
+done
+unset abbr_commands

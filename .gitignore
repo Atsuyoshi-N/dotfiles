@@ -6,3 +6,10 @@ tags
 github-recovery-codes.txt
 .emacs.d/.cache/**
 node_modules
+
+# Nix
+result
+
+# Raycast (compiled extension bundles, managed by Raycast itself)
+.config/raycast/extensions/
+.config/raycast/ai/
